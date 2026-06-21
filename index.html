@@ -775,7 +775,8 @@ const Q = [
 // ================================================================
 //  STATE
 // ================================================================
-const SK = 'ccat_s4_state';
+// Key includes startTime so any config change auto-resets saved state
+const SK = 'ccat_s4_' + (CFG.startTime || 'open');
 let S = {
   sec: 'A',
   cur: 0,
