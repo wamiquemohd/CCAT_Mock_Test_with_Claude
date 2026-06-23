@@ -220,6 +220,40 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
   padding: 8px 12px; border-radius: 5px; line-height: 1.5;
 }
 
+/* ===== NAME SCREEN ===== */
+#name-screen {
+  display: none; min-height: 100vh; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1a237e 0%, #1565c0 100%);
+  color: white; text-align: center; padding: 24px;
+}
+#name-screen h2 { font-size: 1.6rem; margin-bottom: 6px; }
+#name-screen .sub { opacity: 0.75; font-size: 0.9rem; margin-bottom: 32px; }
+.name-card {
+  background: white; border-radius: 14px; padding: 32px 28px;
+  max-width: 420px; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  text-align: left;
+}
+.name-card label { display: block; font-size: 0.85rem; color: #555; margin-bottom: 6px; font-weight: 600; }
+.name-card input[type=text] {
+  width: 100%; padding: 11px 14px; border: 2px solid #ddd; border-radius: 8px;
+  font-size: 1rem; outline: none; transition: border 0.15s; color: #222;
+}
+.name-card input[type=text]:focus { border-color: #1a237e; }
+.consent-row {
+  display: flex; align-items: flex-start; gap: 10px; margin: 20px 0 24px;
+  background: #f5f7ff; border-radius: 8px; padding: 12px 14px;
+}
+.consent-row input[type=checkbox] { width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: #1a237e; }
+.consent-row span { font-size: 0.83rem; color: #444; line-height: 1.5; }
+#proceed-btn {
+  width: 100%; padding: 13px; background: #1a237e; color: white;
+  border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.15s; opacity: 0.4; pointer-events: none;
+}
+#proceed-btn.ready { opacity: 1; pointer-events: auto; }
+#proceed-btn.ready:hover { background: #0d1b6e; }
+
 /* PDF button */
 #pdf-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -232,7 +266,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 /* ===== PRINT / PDF STYLES ===== */
 @media print {
   body { background: white; }
-  #waiting-screen, #exam-screen, #sec-modal { display: none !important; }
+  #waiting-screen, #name-screen, #exam-screen, #sec-modal { display: none !important; }
   #results-screen { display: block !important; }
   #res-header { background: #1a237e !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   #pdf-btn, .filter-bar { display: none !important; }
@@ -269,6 +303,21 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
   <div style="margin-top:32px;opacity:0.45;font-size:0.75rem;letter-spacing:0.5px;">Prepared by &nbsp;<strong style="opacity:1;letter-spacing:1px;">Mohd Wamique</strong></div>
 </div>
 
+<!-- ============ NAME SCREEN ============ -->
+<div id="name-screen">
+  <h2>Before you begin…</h2>
+  <div class="sub">CDAC C-CAT Practice Set 4 (Advanced) &nbsp;|&nbsp; 100 Questions &nbsp;|&nbsp; 2 Hours</div>
+  <div class="name-card">
+    <label for="nickname-input">Enter your nickname</label>
+    <input type="text" id="nickname-input" placeholder="e.g. Rahul, Star, Coder123" maxlength="30" oninput="checkProceed()">
+    <div class="consent-row">
+      <input type="checkbox" id="consent-chk" onchange="checkProceed()">
+      <span>I agree that my exam results (nickname, score, time taken) will be shared with the admin for data collection purposes.</span>
+    </div>
+    <button id="proceed-btn" onclick="proceedToExam()">Continue to Exam →</button>
+  </div>
+</div>
+
 <!-- ============ EXAM SCREEN ============ -->
 <div id="exam-screen">
   <div id="exam-header">
@@ -280,7 +329,10 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
       <div id="timer-display">60:00</div>
       <div id="timer-label">Time Left</div>
     </div>
-    <div><div id="progress-text"></div></div>
+    <div style="text-align:right;">
+      <div id="progress-text"></div>
+      <div id="header-nickname" style="font-size:0.72rem;opacity:0.65;margin-top:2px;"></div>
+    </div>
   </div>
   <div id="exam-main">
     <!-- Palette -->
@@ -360,7 +412,13 @@ const CFG = {
   startTime: '2026-06-22T10:15:00+05:30',
 
   secDuration: 3600,   // seconds per section  (3600 = 1 hour)
-  marking: { correct: 3, wrong: -1 }
+  marking: { correct: 3, wrong: -1 },
+
+  // ★ Paste your Formspree endpoint here to receive result snapshots by email.
+  // Sign up free at https://formspree.io → New Form → copy the URL.
+  // Example: 'https://formspree.io/f/abcd1234'
+  // Set to null to disable.
+  submitEndpoint: null
 };
 
 // ================================================================
@@ -787,6 +845,8 @@ let S = {
   tB: CFG.secDuration,
   aDone: false,
   done: false,
+  nickname: '',
+  startedAt: null,   // timestamp when exam began
 };
 let ticker = null;
 
@@ -796,7 +856,7 @@ let ticker = null;
 window.addEventListener('load', () => {
   loadS();
   if (S.done)  { showResults(); return; }
-  if (S.aDone) { enterSection('B'); return; }
+  if (S.aDone) { enterSection('B'); return; }  // resume mid-exam skips name screen
 
   const t0 = CFG.startTime ? new Date(CFG.startTime) : null;
   if (!t0 || Date.now() >= t0.getTime()) {
@@ -830,14 +890,37 @@ function countdownToStart(t0) {
   setInterval(tick, 1000);
 }
 
-function startExam() { enterSection('A'); }
+function startExam() {
+  // Show name screen first before entering exam
+  document.getElementById('waiting-screen').style.display = 'none';
+  document.getElementById('name-screen').style.display = 'flex';
+}
+
+function checkProceed() {
+  const name = document.getElementById('nickname-input').value.trim();
+  const checked = document.getElementById('consent-chk').checked;
+  document.getElementById('proceed-btn').classList.toggle('ready', name.length > 0 && checked);
+}
+
+function proceedToExam() {
+  const name = document.getElementById('nickname-input').value.trim();
+  if (!name) return;
+  S.nickname = name;
+  S.startedAt = Date.now();
+  saveS();
+  document.getElementById('name-screen').style.display = 'none';
+  enterSection('A');
+}
 
 function enterSection(sec) {
   S.sec = sec;
   S.cur = sec === 'A' ? 0 : 50;
   S.vis[S.cur] = true;
   document.getElementById('waiting-screen').style.display = 'none';
-  document.getElementById('exam-screen').style.display  = 'flex';
+  document.getElementById('name-screen').style.display   = 'none';
+  document.getElementById('exam-screen').style.display   = 'flex';
+  const nn = document.getElementById('header-nickname');
+  if (nn) nn.textContent = S.nickname ? `Candidate: ${S.nickname}` : '';
   buildPalette();
   renderQ();
   runTimer();
@@ -899,7 +982,7 @@ function confirmSubmit() {
   }
 }
 
-function submit() { S.done = true; saveS(); showResults(); }
+function submit() { S.done = true; saveS(); sendSnapshot(); showResults(); }
 
 // ================================================================
 //  PALETTE
@@ -1006,26 +1089,69 @@ function loadS() {
 // ================================================================
 //  RESULTS
 // ================================================================
-function showResults() {
-  document.getElementById('waiting-screen').style.display = 'none';
-  document.getElementById('exam-screen').style.display   = 'none';
-  document.getElementById('results-screen').style.display = 'block';
-
+function calcStats() {
   let cor=0, wrg=0, una=0;
   Q.forEach((q,i) => {
     if (S.ans[i] === null) una++;
     else if (S.ans[i] === q.a) cor++;
     else wrg++;
   });
-  const score = cor*CFG.marking.correct + wrg*CFG.marking.wrong;
+  const score    = cor*CFG.marking.correct + wrg*CFG.marking.wrong;
+  const negMarks = wrg * Math.abs(CFG.marking.wrong);
+  const spentA   = CFG.secDuration - S.tA;
+  const spentB   = CFG.secDuration - S.tB;
+  const totalSec = spentA + spentB;
+  const fmt = s => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+  return { cor, wrg, una, score, negMarks, spentA, spentB, totalSec, fmt };
+}
+
+function showResults() {
+  document.getElementById('waiting-screen').style.display = 'none';
+  document.getElementById('name-screen').style.display   = 'none';
+  document.getElementById('exam-screen').style.display   = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+
+  const { cor, wrg, una, score, negMarks, spentA, spentB, totalSec, fmt } = calcStats();
+
+  if (S.nickname) {
+    document.getElementById('res-header').querySelector('p').innerHTML =
+      `Candidate: <strong>${escH(S.nickname)}</strong> &nbsp;|&nbsp; CDAC C-CAT Practice Set 4 (Advanced) &nbsp;|&nbsp; Marking: +3 correct, −1 wrong`;
+  }
 
   document.getElementById('score-grid').innerHTML = `
-    <div class="score-tile t"><div class="s-val">${score}</div><div class="s-lbl">Score (max 300)</div></div>
+    <div class="score-tile t"><div class="s-val">${score}</div><div class="s-lbl">Total Score (max 300)</div></div>
     <div class="score-tile c"><div class="s-val">${cor}</div><div class="s-lbl">Correct (+${CFG.marking.correct} each)</div></div>
     <div class="score-tile w"><div class="s-val">${wrg}</div><div class="s-lbl">Wrong (${CFG.marking.wrong} each)</div></div>
-    <div class="score-tile u"><div class="s-val">${una}</div><div class="s-lbl">Unattempted (0)</div></div>
+    <div class="score-tile u"><div class="s-val">${una}</div><div class="s-lbl">Unattempted</div></div>
+    <div class="score-tile" style="border-left:3px solid #b71c1c;"><div class="s-val" style="color:#b71c1c;">−${negMarks}</div><div class="s-lbl">Negative Marks</div></div>
+    <div class="score-tile" style="border-left:3px solid #1565c0;"><div class="s-val" style="color:#1565c0;">${fmt(spentA)}</div><div class="s-lbl">Section A Time</div></div>
+    <div class="score-tile" style="border-left:3px solid #1565c0;"><div class="s-val" style="color:#1565c0;">${fmt(spentB)}</div><div class="s-lbl">Section B Time</div></div>
+    <div class="score-tile" style="border-left:3px solid #37474f;"><div class="s-val" style="color:#37474f;">${fmt(totalSec)}</div><div class="s-lbl">Total Time Taken</div></div>
   `;
   renderSolutions('all');
+}
+
+async function sendSnapshot() {
+  if (!CFG.submitEndpoint) return;
+  const { cor, wrg, una, score, negMarks, spentA, spentB, totalSec, fmt } = calcStats();
+  try {
+    await fetch(CFG.submitEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        nickname:        S.nickname || '(no name)',
+        score:           score,
+        correct:         cor,
+        wrong:           wrg,
+        unattempted:     una,
+        negative_marks:  `-${negMarks}`,
+        section_a_time:  fmt(spentA),
+        section_b_time:  fmt(spentB),
+        total_time:      fmt(totalSec),
+        submitted_at:    new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
+      })
+    });
+  } catch(e) { /* silent — don't block results page */ }
 }
 
 function renderSolutions(filter) {
