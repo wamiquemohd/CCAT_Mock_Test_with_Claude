@@ -1467,22 +1467,10 @@ window.addEventListener('load', () => {
     const card = document.getElementById('card-' + S.selectedSet);
     if (card) card.classList.add('selected');
     showSetInfoPanel(S.selectedSet);
-    const t0 = CFG.startTime ? new Date(CFG.startTime) : null;
-      if (!t0 || Date.now() >= t0.getTime()) {
-      document.getElementById('start-now-btn').style.display = 'inline-block';
-      } else {
-    }
+    document.getElementById('start-now-btn').style.display = 'inline-block';
   }
 });
 
-
-    const h = String(Math.floor(d/3600000)).padStart(2,'0');
-    const m = String(Math.floor(d%3600000/60000)).padStart(2,'0');
-    const s = String(Math.floor(d%60000/1000)).padStart(2,'0');
-    el.textContent = h+':'+m+':'+s;
-  };
-  tick(); setInterval(tick, 1000);
-}
 
 function startExam() {
   if (!S.selectedSet) { alert('Please select a practice set first.'); return; }
