@@ -257,6 +257,49 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 }
 #pdf-btn:hover { background: #0d1b6e; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,35,126,0.35); }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px) {
+  /* Header: compact 2-row layout */
+  #exam-header {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  #exam-header { justify-content: space-between; }
+  #exam-header > div:first-child { flex: 1 1 auto; min-width: 0; }
+  #exam-header h2 { font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #section-label { font-size: 0.68rem; white-space: normal; }
+  #timer-display { font-size: 1.1rem; padding: 4px 12px; }
+  #progress-text { font-size: 0.7rem; }
+
+  /* Stack palette above question area */
+  #exam-main { flex-direction: column; overflow: visible; }
+
+  /* Palette: horizontal scrollable strip */
+  #palette-panel {
+    width: 100%; min-width: unset;
+    border-right: none; border-bottom: 1px solid #ddd;
+    padding: 10px 12px; gap: 8px;
+  }
+  #palette-grid {
+    grid-template-columns: repeat(10, 1fr);
+    gap: 3px;
+  }
+  .palette-btn { font-size: 0.6rem; }
+  .legend { flex-direction: row; flex-wrap: wrap; gap: 6px 12px; }
+  .pal-stats { flex-direction: row; flex-wrap: wrap; gap: 4px 16px; }
+
+  /* Question area full width */
+  #question-area { padding: 14px 14px; }
+  #q-text { font-size: 0.95rem; padding: 12px 14px; word-break: break-word; }
+  .opt-item { padding: 9px 12px; font-size: 0.9rem; }
+
+  /* Nav buttons: full width stacked */
+  #q-nav { gap: 8px; }
+  .nav-btn { padding: 10px 16px; font-size: 0.85rem; }
+  .btn-submit { margin-left: 0; width: 100%; }
+}
+
 /* ===== PRINT / PDF STYLES ===== */
 @media print {
   body { background: white; }
