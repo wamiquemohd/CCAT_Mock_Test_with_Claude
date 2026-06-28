@@ -287,7 +287,8 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
   }
   .palette-btn { font-size: 0.6rem; }
   .legend { flex-direction: row; flex-wrap: wrap; gap: 6px 12px; }
-  .pal-stats { flex-direction: row; flex-wrap: wrap; gap: 4px 16px; }
+  .pal-stats { flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
+  .stat-row { gap: 6px; }
 
   /* Question area full width */
   #question-area { padding: 14px 14px; }
@@ -1693,8 +1694,8 @@ function renderQ() {
 }
 
 function pick(i) {
-  S.ans[S.cur]=i;
-  document.querySelectorAll('.opt-item').forEach((el,idx)=>el.classList.toggle('selected',idx===i));
+  S.ans[S.cur] = (S.ans[S.cur]===i) ? null : i;
+  document.querySelectorAll('.opt-item').forEach((el,idx)=>el.classList.toggle('selected',idx===S.ans[S.cur]));
   refreshPalette(); saveS();
 }
 
