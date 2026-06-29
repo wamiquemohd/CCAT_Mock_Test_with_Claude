@@ -401,12 +401,132 @@ s3_data = [
 ]
 
 # ================================================================
+#  SET 5 — Advanced (100 questions, Sections A+B)
+#  Source: CCAT 2026 Mock SET 2 PDF (Mohd Wamique)
+# ================================================================
+s5_data = [
+  # ---- SECTION A : Quantitative Aptitude (Q1-Q18) ----
+  ['A','Quantitative Aptitude','A shopkeeper sells an article at a loss of 10%. Had he sold it for Rs.45 more, he would have gained 5%. Find the cost price.',['Rs.350','Rs.300','Rs.250','Rs.400'],1],
+  ['A','Quantitative Aptitude','The ratio of two numbers is 3:5 and their HCF is 8. Find their LCM.',['24','120','40','60'],1],
+  ['A','Quantitative Aptitude','A sum of Rs.6,000 is invested at 5% per annum compound interest. What is the amount after 2 years?',['Rs.6,615','Rs.6,600','Rs.6,500','Rs.6,630'],0],
+  ['A','Quantitative Aptitude','If 8 men can complete a work in 12 days, how many days will 6 men take to complete the same work?',['9 days','16 days','18 days','14 days'],1],
+  ['A','Quantitative Aptitude','A car covers 240 km at a uniform speed. If the speed had been 20 km/h more, it would have taken 2 hours less. Find the original speed.',['30 km/h','48 km/h','60 km/h','40 km/h'],3],
+  ['A','Quantitative Aptitude','The simple interest on a sum is 1/9 of the principal, and the number of years equals the rate percent per annum. Find the rate percent.',['9%','5%','3%','3 1/3%'],3],
+  ['A','Quantitative Aptitude','What is the average of the first 10 odd natural numbers?',['11','19','9','10'],3],
+  ['A','Quantitative Aptitude','A number is increased by 20% and then decreased by 20%. What is the net change?',['4% decrease','No change','4% increase','2% decrease'],0],
+  ['A','Quantitative Aptitude','The perimeter of a rectangle is 60 cm and its length is twice its breadth. Find its area.',['180 sq cm','100 sq cm','150 sq cm','200 sq cm'],3],
+  ['A','Quantitative Aptitude','In an exam, a student scored 30% and failed by 45 marks. Another scored 50% and got 25 marks more than the pass mark. Find the maximum marks.',['400','350','320','300'],1],
+  ['A','Quantitative Aptitude','The product of two consecutive positive even numbers is 168. Find the larger number.',['16','12','13','14'],3],
+  ['A','Quantitative Aptitude','A sum amounts to Rs.9,800 in 5 years and Rs.12,005 in 8 years at simple interest. Find the principal.',['Rs.6,125','Rs.6,500','Rs.7,000','Rs.5,000'],0],
+  ['A','Quantitative Aptitude','If the radius of a circle is increased by 50%, by what percent does its area increase?',['125%','100%','50%','150%'],0],
+  ['A','Quantitative Aptitude','A can do a work in 15 days and B in 10 days. They work together for 3 days, then A leaves. In how many more days will B finish the remaining work?',['4 days','5 days','6 days','7 days'],1],
+  ['A','Quantitative Aptitude','The marked price of a shirt is Rs.1,200. After two successive discounts of 20% and 10%, what is the final selling price?',['Rs.816','Rs.864','Rs.900','Rs.840'],1],
+  ['A','Quantitative Aptitude','Three numbers are in the ratio 2:3:4 and their sum is 180. Find the largest number.',['60','80','40','90'],1],
+  ['A','Quantitative Aptitude','A man spends 75% of his income. If his income rises by 20% and his expenditure by 10%, by what percent do his savings increase?',['50%','60%','45%','40%'],0],
+  ['A','Quantitative Aptitude','How many 3-digit numbers can be formed using the digits 1, 2, 3, 4, 5 without repetition?',['125','120','60','100'],2],
+  # ---- SECTION A : Reasoning (Q19-Q34) ----
+  ['A','Reasoning','If "A $ B" means A is the father of B, and "A # B" means A is the sister of B, then what does "P $ Q # R" mean?',['P is the grandfather of R','P is the father of R','P is the uncle of R','P is the brother of R'],1],
+  ['A','Reasoning','Find the missing term: 7, 14, 28, 56, ?',['112','98','110','120'],0],
+  ['A','Reasoning','Find the odd one out: 3, 5, 7, 9, 11, 13',['9','7','5','11'],0],
+  ['A','Reasoning','In a code, CAT = 24 and DOG = 26 (sum of alphabet positions). What is the value of COW?',['41','42','40','38'],0],
+  ['A','Reasoning','Pointing to a man, a woman said, "His mother is the only daughter of my mother." How is the woman related to the man?',['Mother','Aunt','Grandmother','Sister'],0],
+  ['A','Reasoning','A is taller than B but shorter than C. D is taller than A but shorter than C. Who is the tallest?',['A','C','B','D'],1],
+  ['A','Reasoning','Find the next term in the series: AZ, BY, CX, DW, ?',['EV','FV','DV','EW'],0],
+  ['A','Reasoning','If today is Wednesday, what day will it be after 100 days?',['Saturday','Thursday','Sunday','Friday'],3],
+  ['A','Reasoning','Statements: Some books are pens. All pens are tables.\nConclusions: I. Some books are tables. II. All tables are pens.\nWhich follows?',['Only II follows','Only I follows','Neither follows','Both I and II follow'],1],
+  ['A','Reasoning','A man walks 4 km north, then turns east and walks 3 km. How far is he from the starting point?',['7 km','5 km','1 km','6 km'],1],
+  ['A','Reasoning','Find the next term: 1, 1, 2, 3, 5, 8, ?',['11','15','13','12'],2],
+  ['A','Reasoning','P is the mother of Q. Q is the wife of R. S is the son of R. How is P related to S?',['Mother','Grandmother','Aunt','Sister'],1],
+  ['A','Reasoning','In a code, "247" means "spread the news", "147" means "gather the news", and "367" means "tell the truth". Which digit stands for "news"?',['2','4','1','7'],1],
+  ['A','Reasoning','If "+" means multiply, "x" means subtract, "-" means divide, and "divide" means add, find: 16 divide 4 - 2 + 8 x 4',['32','28','20','24'],1],
+  ['A','Reasoning','Arrange in logical sequence: 1. Seed  2. Flower  3. Fruit  4. Plant  5. Tree',['1, 4, 5, 2, 3','1, 2, 4, 5, 3','1, 4, 2, 5, 3','1, 5, 4, 2, 3'],0],
+  ['A','Reasoning','A clock loses 5 minutes every hour. If set correctly at 12:00 noon, what time will it show when the correct time is 6:00 PM?',['6:30 PM','5:25 PM','5:00 PM','5:30 PM'],3],
+  # ---- SECTION A : English – Reading Comprehension Passage 1 (Q35-Q38) ----
+  ['A','English – Reading Comprehension','Read the following passage:\n\nThe Internet of Things (IoT) refers to the network of physical devices embedded with sensors and software that connect and exchange data over the internet. From smart thermostats to wearable fitness trackers, IoT devices collect vast amounts of information to automate tasks and improve efficiency. However, this connectivity also raises serious security concerns. Each connected device is a potential entry point for hackers, and many manufacturers prioritise low cost over strong security. As IoT adoption grows, experts stress that building security into devices from the design stage — rather than adding it later — is essential to protect users\' privacy.\n\n(RC-1) According to the passage, what is the primary purpose of IoT devices?',['To replace the internet entirely','To reduce the cost of manufacturing','To act as entry points for hackers','To collect data and automate tasks to improve efficiency'],3],
+  ['A','English – Reading Comprehension','(RC-1) Which security concern does the passage highlight?',['Each connected device can be an entry point for hackers','IoT devices are far too expensive for ordinary users','Manufacturers add too much security to devices','IoT devices cannot connect to the internet at all'],0],
+  ['A','English – Reading Comprehension','(RC-1) What do experts recommend, according to the passage?',['Adding security only after a hack occurs','Lowering the cost of devices further','Avoiding all IoT devices completely','Building security into devices from the design stage'],3],
+  ['A','English – Reading Comprehension','(RC-1) The word "prioritise" in the passage most nearly means:',['give precedence to','ignore completely','reduce sharply','delay indefinitely'],0],
+  # ---- SECTION A : English – Reading Comprehension Passage 2 (Q39-Q41) ----
+  ['A','English – Reading Comprehension','Read the following passage:\n\nArtificial intelligence has moved from research labs into everyday life. Recommendation systems suggest what we watch and buy, while language models can draft emails and answer questions. Yet AI is only as good as the data it learns from. If the training data contains biases, the system may reproduce or even amplify them. This is why researchers emphasise the importance of diverse, high-quality datasets and ongoing human oversight. AI is a powerful tool, but it is not a substitute for human judgement.\n\n(RC-2) According to the passage, what determines the quality of an AI system?',['The size of the company that builds it','The speed of the computer','The data it learns from','The number of users it has'],2],
+  ['A','English – Reading Comprehension','(RC-2) What problem can arise if the training data is biased?',['The training data will delete itself','The system will simply run slower','The system will refuse to function','The system may reproduce or amplify the biases'],3],
+  ['A','English – Reading Comprehension','(RC-2) What is the main message of the passage?',['AI is powerful but still needs good data and human oversight','AI should completely replace human judgement','AI works perfectly even without any data','AI is useless in everyday life'],0],
+  # ---- SECTION A : English – Vocabulary & Grammar (Q42-Q48) ----
+  ['A','English – Vocabulary','Choose the word most similar in meaning to AMPLIFY.',['Conceal','Ignore','Reduce','Intensify'],3],
+  ['A','English – Vocabulary','Choose the word most OPPOSITE in meaning to DIVERSE.',['Uniform','Mixed','Assorted','Varied'],0],
+  ['A','English – Grammar','Fill in the blank: "If I ______ rich, I would travel the world."',['were','will be','was','am'],0],
+  ['A','English – Spelling','Pick the correctly spelled word.',['Maintenence','Maintenance','Maintainance','Maintanance'],1],
+  ['A','English – One-word Substitution','Choose the one word for: "A government by the people, for the people."',['Democracy','Anarchy','Aristocracy','Monarchy'],0],
+  ['A','English – Idioms','What does the idiom "once in a blue moon" mean?',['Every month','Only at night','Very rarely','Very frequently'],2],
+  ['A','English – Punctuation','Which of the following sentences is correctly punctuated?',['She asked \'Where are you going.\'','She asked, \'Where are you going?\'','She asked \'where are you going\'?','She asked, where are you going?'],1],
+  # ---- SECTION A : Computer Fundamentals (Q49-Q50) ----
+  ['A','Computer Fundamentals','Which of the following is an OUTPUT device?',['Mouse','Scanner','Keyboard','Monitor'],3],
+  ['A','Computer Fundamentals','Which component is often called the "brain" of the computer?',['RAM','CPU','Hard Disk','Monitor'],1],
+  # ---- SECTION B : C Programming (Q1-Q16) ----
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int a = 5, b = 2;\n    printf("%d", a & b);\n    return 0;\n}',['0','7','2','1'],0],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int i;\n    for (i = 0; i < 3; i++);\n    printf("%d", i);\n    return 0;\n}',['3','0','It is an infinite loop','2'],0],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    char c = \'A\';\n    printf("%d", c + 1);\n    return 0;\n}',['65','66','Letter B','1'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int x = 10;\n    int *p = &x;\n    *p = *p + 5;\n    printf("%d", x);\n    return 0;\n}',['15','10','Compilation error','5'],0],
+  ['B','C Programming','What is the value of the expression 5 << 2 in C?',['10','7','25','20'],3],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int arr[3] = {10, 20, 30};\n    printf("%d", *(arr + 1) + 1);\n    return 0;\n}',['21','30','20','11'],0],
+  ['B','C Programming','Which format specifier is used to print an unsigned integer in C?',['%c','%u','%d','%f'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int n = 7;\n    printf("%d", n >> 1);\n    return 0;\n}',['3','14','7','4'],0],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nvoid change(int x) { x = 100; }\nint main() {\n    int a = 50;\n    change(a);\n    printf("%d", a);\n    return 0;\n}',['garbage value','100','50','0'],2],
+  ['B','C Programming','What does the "const" qualifier indicate when applied to a variable?',['The variable becomes a constant function','Its value cannot be changed after initialization','The variable becomes global','The variable is stored in ROM'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int a = 1;\n    int b = (a == 1) ? 10 : 20;\n    printf("%d", b);\n    return 0;\n}',['1','10','20','0'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int sum = 0;\n    for (int i = 1; i <= 4; i++)\n        sum += i;\n    printf("%d", sum);\n    return 0;\n}',['6','4','10','9'],2],
+  ['B','C Programming','Which header file must be included to use printf() and scanf()?',['stdlib.h','stdio.h','string.h','conio.h'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int x = 3, y = 4;\n    printf("%d", x++ + ++y);\n    return 0;\n}',['8','10','9','7'],0],
+  ['B','C Programming','What is the purpose of the "break" statement inside a loop?',['It restarts the loop from the beginning','It exits the loop immediately','It skips the current iteration and continues with the next','It pauses the loop temporarily'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int a[] = {2, 4, 6, 8};\n    int n = sizeof(a) / sizeof(a[0]);\n    printf("%d", n);\n    return 0;\n}',['16','8','1','4'],3],
+  # ---- SECTION B : Data Structures (Q17-Q27) ----
+  ['B','Data Structures','What is the minimum number of stacks required to implement a queue?',['1','2','4','3'],1],
+  ['B','Data Structures','Which of the following is a NON-LINEAR data structure?',['Stack','Queue','Array','Tree'],3],
+  ['B','Data Structures','In a singly linked list, deleting the last node (with only the head pointer available) takes:',['O(1)','O(n)','O(n^2)','O(log n)'],1],
+  ['B','Data Structures','What is the prefix form of the infix expression (A + B) * C?',['+ A B * C','* A + B C','* + A B C','+ * A B C'],2],
+  ['B','Data Structures','A binary tree has 15 nodes. What is its minimum possible height (root at height 0)?',['15','4','7','3'],3],
+  ['B','Data Structures','In which depth-first traversal is the root node visited BEFORE its subtrees?',['Postorder','Inorder','Preorder','Reverse inorder'],2],
+  ['B','Data Structures','Which combination of data structures implements an efficient O(1) LRU cache?',['A hash map plus a doubly linked list','A simple stack','A binary search tree','A single array'],0],
+  ['B','Data Structures','The worst-case time complexity of binary search on a sorted array of n elements is:',['O(1)','O(n)','O(log n)','O(n log n)'],2],
+  ['B','Data Structures','A circular linked list is one in which:',['Nodes must be physically stored in a circle in memory','There is no head node at all','The last node points back to the first node','Every node points to itself'],2],
+  ['B','Data Structures','In a full binary tree where every internal node has exactly 2 children, if there are n internal nodes, the number of leaf nodes is:',['n - 1','2n','n','n + 1'],3],
+  ['B','Data Structures','Which sorting algorithm is stable AND has O(n log n) worst-case time complexity?',['Merge sort','Quick sort','Selection sort','Heap sort'],0],
+  # ---- SECTION B : OOP in C++ (Q28-Q34) ----
+  ['B','OOP in C++','What is it called when a derived class provides its own implementation of a method already defined in the base class?',['Method overloading','Encapsulation','Data hiding','Method overriding'],3],
+  ['B','OOP in C++','How is a pure virtual function declared in C++?',['void func() = 0;','virtual void func() {}','virtual void func() = 0;','pure void func();'],2],
+  ['B','OOP in C++','A class that contains at least one pure virtual function is called a/an:',['Friend class','Concrete class','Abstract class','Static class'],2],
+  ['B','OOP in C++','Which of the following is NOT one of the core principles of Object-Oriented Programming?',['Inheritance','Pointers','Polymorphism','Encapsulation'],1],
+  ['B','OOP in C++','In C++, the "this" pointer:',['Points to the current object that invoked the member function','Is a single static pointer shared by all objects','Points to the next object in memory','Points to the base class object'],0],
+  ['B','OOP in C++','When an object of a derived class is created, which constructor runs first?',['Only the derived class constructor runs','Only the base class constructor runs','The derived class constructor, then the base class constructor','The base class constructor, then the derived class constructor'],3],
+  ['B','OOP in C++','The ability of different classes to respond to the same function call in their own way is called:',['Encapsulation','Inheritance','Polymorphism','Abstraction'],2],
+  # ---- SECTION B : Operating Systems (Q35-Q40) ----
+  ['B','Operating Systems','The technique that allows execution of a program larger than the available physical memory is called:',['Caching','Virtual memory','Spooling','Multiprogramming'],1],
+  ['B','Operating Systems','Which of the following is NOT a necessary condition for a deadlock?',['Preemption of resources is allowed','Mutual exclusion','Circular wait','Hold and wait'],0],
+  ['B','Operating Systems','In Round Robin scheduling, which parameter most directly affects performance?',['The time quantum (time slice)','The number of CPUs','The process priority number','The burst time only'],0],
+  ['B','Operating Systems','A program in execution is called a:',['Process','Program','Function','Thread'],0],
+  ['B','Operating Systems','Which memory allocation strategy chooses the smallest free block that is large enough for a process?',['Worst fit','Best fit','Next fit','First fit'],1],
+  ['B','Operating Systems','The core part of the operating system that is loaded at boot time and stays resident in memory is the:',['Compiler','Kernel','Shell','Loader'],1],
+  # ---- SECTION B : Networking (Q41-Q45) ----
+  ['B','Networking','Which protocol is used to SEND email from a client to a mail server?',['POP3','IMAP','SMTP','HTTP'],2],
+  ['B','Networking','In the TCP/IP model, the IP address is used at which layer?',['The Internet (Network) layer','The Link layer','The Transport layer','The Application layer'],0],
+  ['B','Networking','How many bits are there in a MAC address?',['64','48','32','16'],1],
+  ['B','Networking','Which of the following is a valid PRIVATE IPv4 address range?',['8.8.8.0 to 8.8.8.255','172.0.0.0 to 172.15.255.255','192.168.0.0 to 192.168.255.255','11.0.0.0 to 11.255.255.255'],2],
+  ['B','Networking','How many usable host addresses are there in a /24 IPv4 subnet?',['510','256','254','255'],2],
+  # ---- SECTION B : Big Data & AI Basics (Q46-Q50) ----
+  ['B','Big Data & AI Basics','The original "three Vs" used to characterize Big Data are:',['Velocity, Volume, Visualization','Variety, Validity, Volume','Volume, Value, Veracity','Volume, Velocity, Variety'],3],
+  ['B','Big Data & AI Basics','In the Hadoop ecosystem, which component provides distributed STORAGE?',['MapReduce','HDFS','YARN','Pig'],1],
+  ['B','Big Data & AI Basics','Which type of machine learning uses LABELLED training data to learn an input-to-output mapping?',['Supervised learning','Unsupervised learning','Clustering','Reinforcement learning'],0],
+  ['B','Big Data & AI Basics','In machine learning, "overfitting" describes a model that:',['Cannot be trained at all','Performs poorly on both training and test data','Performs well on training data but poorly on unseen data','Has far too few parameters to learn'],2],
+  ['B','Big Data & AI Basics','Which programming model does Hadoop use to process large datasets in parallel?',['ZooKeeper','MapReduce','HBase','HDFS'],1],
+]
+
+# ================================================================
 #  VERIFY COUNTS
 # ================================================================
 assert len(s1_data) == 100, f"Set 1 count wrong: {len(s1_data)}"
 assert len(s2_data) == 100, f"Set 2 count wrong: {len(s2_data)}"
 assert len(s3_data) == 150, f"Set 3 count wrong: {len(s3_data)}"
-print(f"Question counts: Set1={len(s1_data)}, Set2={len(s2_data)}, Set3={len(s3_data)}")
+assert len(s5_data) == 100, f"Set 5 count wrong: {len(s5_data)}"
+print(f"Question counts: Set1={len(s1_data)}, Set2={len(s2_data)}, Set3={len(s3_data)}, Set5={len(s5_data)}")
 
 # ================================================================
 #  ENCODE ANSWER KEYS
@@ -414,7 +534,8 @@ print(f"Question counts: Set1={len(s1_data)}, Set2={len(s2_data)}, Set3={len(s3_
 s1_ak = encode_ak([q[4] for q in s1_data])
 s2_ak = encode_ak([q[4] for q in s2_data])
 s3_ak = encode_ak([q[4] for q in s3_data])
-print(f"AKs computed: s1={len(s1_ak)}, s2={len(s2_ak)}, s3={len(s3_ak)}")
+s5_ak = encode_ak([q[4] for q in s5_data])
+print(f"AKs computed: s1={len(s1_ak)}, s2={len(s2_ak)}, s3={len(s3_ak)}, s5={len(s5_ak)}")
 
 # ================================================================
 #  READ EXISTING HTML
@@ -492,6 +613,7 @@ q4_content = sanitize_js_strings(q4_content)
 s1_qs = qs_to_js(s1_data)
 s2_qs = qs_to_js(s2_data)
 s3_qs = qs_to_js(s3_data)
+s5_qs = qs_to_js(s5_data)
 
 # ================================================================
 #  NEW CSS
@@ -557,6 +679,13 @@ NEW_WAITING = """<div id="waiting-screen">
       <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
       <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">Original Sample Paper &mdash; Advanced Level</div>
     </div>
+    <div class="set-card" id="card-5" onclick="selectSet('5')">
+      <div class="sc-badge">Advanced</div>
+      <div class="sc-num">Practice Set 5</div>
+      <div class="sc-name">Section A + B</div>
+      <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
+      <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">IoT, AI Passages + Advanced CS Topics</div>
+    </div>
   </div>
   <div id="set-info-panel" style="display:none">
     <div class="info-grid" id="set-info-grid"></div>
@@ -602,6 +731,10 @@ const SETS = {
   ]},
   '4': { name:'Practice Set 4', level:'Advanced', totalQ:100, sections:['A','B'], maxScore:300,
          ak:'__S4_AK__', questions:[__S4_Q__
+  ]},
+  '5': { name:'Practice Set 5', level:'Advanced', totalQ:100, sections:['A','B'], maxScore:300,
+         ak:'__S5_AK__', questions:[
+  __S5_Q__
   ]}
 };
 
@@ -1131,10 +1264,12 @@ final_js = final_js.replace('__S1_AK__', s1_ak)
 final_js = final_js.replace('__S2_AK__', s2_ak)
 final_js = final_js.replace('__S3_AK__', s3_ak)
 final_js = final_js.replace('__S4_AK__', s4_ak)
+final_js = final_js.replace('__S5_AK__', s5_ak)
 final_js = final_js.replace('  __S1_Q__\n', '  ' + s1_qs.replace('\n', '\n  ') + '\n')
 final_js = final_js.replace('  __S2_Q__\n', '  ' + s2_qs.replace('\n', '\n  ') + '\n')
 final_js = final_js.replace('  __S3_Q__\n', '  ' + s3_qs.replace('\n', '\n  ') + '\n')
 final_js = final_js.replace('__S4_Q__', q4_content)
+final_js = final_js.replace('  __S5_Q__\n', '  ' + s5_qs.replace('\n', '\n  ') + '\n')
 
 script_replacement = '<script>\n' + final_js + '\n</script>'
 html = script_pat.sub(lambda m: script_replacement, html)

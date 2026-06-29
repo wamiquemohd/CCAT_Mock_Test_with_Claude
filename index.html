@@ -495,6 +495,31 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 .set-card.selected .sc-badge { background: #43a047; }
 #set-info-panel { text-align: center; width: 100%; max-width: 660px; }
 
+
+/* ===== SET SELECTOR ===== */
+.set-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px; max-width: 660px; width: 100%; margin: 16px 0;
+}
+@media(max-width:540px){ .set-cards-grid { grid-template-columns: 1fr; } }
+.set-card {
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px; padding: 16px 20px; cursor: pointer; position: relative;
+  text-align: left; transition: all 0.15s;
+}
+.set-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+.set-card.selected { background: rgba(255,255,255,0.25); border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+.sc-num  { font-size: 0.73rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.sc-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.sc-meta { font-size: 0.76rem; opacity: 0.8; }
+.sc-badge {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.65rem; padding: 2px 9px; border-radius: 10px;
+  font-weight: 700; letter-spacing: 0.5px; background: rgba(255,255,255,0.2);
+}
+.set-card.selected .sc-badge { background: #43a047; }
+#set-info-panel { text-align: center; width: 100%; max-width: 660px; }
+
 </style>
 </head>
 <body>
@@ -532,10 +557,21 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
       <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
       <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">Original Sample Paper &mdash; Advanced Level</div>
     </div>
+    <div class="set-card" id="card-5" onclick="selectSet('5')">
+      <div class="sc-badge">Advanced</div>
+      <div class="sc-num">Practice Set 5</div>
+      <div class="sc-name">Section A + B</div>
+      <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
+      <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">IoT, AI Passages + Advanced CS Topics</div>
+    </div>
   </div>
   <div id="set-info-panel" style="display:none">
     <div class="info-grid" id="set-info-grid"></div>
-    <button id="start-now-btn" onclick="startExam()" style="display:none;margin-top:18px;">Start Exam Now &#x25B6;</button>
+    <div style="font-size:0.85rem;opacity:0.7;margin-bottom:6px;">Exam begins at</div>
+    <div id="start-time-label"></div>
+    <div id="countdown-display">--:--:--</div>
+    <div class="hint">Select a set above, then wait for the scheduled time or click Start</div>
+    <button id="start-now-btn" onclick="startExam()" style="display:none;">Start Exam Now &#x25B6;</button>
   </div>
   <div style="margin-top:32px;opacity:0.45;font-size:0.75rem;letter-spacing:0.5px;">Prepared by &nbsp;<strong style="opacity:1;letter-spacing:1px;">Mohd Wamique (ex-CDACian)</strong></div>
 </div>
@@ -628,7 +664,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
   <div id="res-body">
     <div class="score-grid" id="score-grid"></div>
     <div class="filter-bar">
-      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
+      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
       <button class="f-btn"    onclick="filterSol('w',this)">Wrong Only</button>
       <button class="f-btn"    onclick="filterSol('c',this)">Correct Only</button>
       <button class="f-btn"    onclick="filterSol('u',this)">Unattempted</button>
@@ -644,7 +680,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 //  CONFIG
 // ================================================================
 const CFG = {
-  startTime: null,
+  startTime: '2026-06-22T10:15:00+05:30',
   secDuration: 3600,
   marking: { correct: 3, wrong: -1 },
   submitEndpoint: 'https://formspree.io/f/xvzjgery'
@@ -1422,6 +1458,110 @@ const SETS = {
    exp:'Class B addresses (128.x–191.x) have default subnet mask 255.255.0.0 (/16).'},
 
   
+  
+  ]},
+  '5': { name:'Practice Set 5', level:'Advanced', totalQ:100, sections:['A','B'], maxScore:300,
+         ak:'DzUQPiccCxM1ewk2ED4hGg4RM3gMNhA+IhwNEDJ7DzUQOCcZCxMyfQwzED0hGQwQNXsMNhM9JxkNEzJ7DzQTPSEcDRYzegk0ED8gHA4WMnoPNhU/IRkOEzN7DjYTPyAcDRMyew==', questions:[
+  {"id": 1, "s": "A", "cat": "Quantitative Aptitude", "q": "A shopkeeper sells an article at a loss of 10%. Had he sold it for Rs.45 more, he would have gained 5%. Find the cost price.", "o": ["Rs.350", "Rs.300", "Rs.250", "Rs.400"], "exp": "Correct answer is B: Rs.300"},
+    {"id": 2, "s": "A", "cat": "Quantitative Aptitude", "q": "The ratio of two numbers is 3:5 and their HCF is 8. Find their LCM.", "o": ["24", "120", "40", "60"], "exp": "Correct answer is B: 120"},
+    {"id": 3, "s": "A", "cat": "Quantitative Aptitude", "q": "A sum of Rs.6,000 is invested at 5% per annum compound interest. What is the amount after 2 years?", "o": ["Rs.6,615", "Rs.6,600", "Rs.6,500", "Rs.6,630"], "exp": "Correct answer is A: Rs.6,615"},
+    {"id": 4, "s": "A", "cat": "Quantitative Aptitude", "q": "If 8 men can complete a work in 12 days, how many days will 6 men take to complete the same work?", "o": ["9 days", "16 days", "18 days", "14 days"], "exp": "Correct answer is B: 16 days"},
+    {"id": 5, "s": "A", "cat": "Quantitative Aptitude", "q": "A car covers 240 km at a uniform speed. If the speed had been 20 km/h more, it would have taken 2 hours less. Find the original speed.", "o": ["30 km/h", "48 km/h", "60 km/h", "40 km/h"], "exp": "Correct answer is D: 40 km/h"},
+    {"id": 6, "s": "A", "cat": "Quantitative Aptitude", "q": "The simple interest on a sum is 1/9 of the principal, and the number of years equals the rate percent per annum. Find the rate percent.", "o": ["9%", "5%", "3%", "3 1/3%"], "exp": "Correct answer is D: 3 1/3%"},
+    {"id": 7, "s": "A", "cat": "Quantitative Aptitude", "q": "What is the average of the first 10 odd natural numbers?", "o": ["11", "19", "9", "10"], "exp": "Correct answer is D: 10"},
+    {"id": 8, "s": "A", "cat": "Quantitative Aptitude", "q": "A number is increased by 20% and then decreased by 20%. What is the net change?", "o": ["4% decrease", "No change", "4% increase", "2% decrease"], "exp": "Correct answer is A: 4% decrease"},
+    {"id": 9, "s": "A", "cat": "Quantitative Aptitude", "q": "The perimeter of a rectangle is 60 cm and its length is twice its breadth. Find its area.", "o": ["180 sq cm", "100 sq cm", "150 sq cm", "200 sq cm"], "exp": "Correct answer is D: 200 sq cm"},
+    {"id": 10, "s": "A", "cat": "Quantitative Aptitude", "q": "In an exam, a student scored 30% and failed by 45 marks. Another scored 50% and got 25 marks more than the pass mark. Find the maximum marks.", "o": ["400", "350", "320", "300"], "exp": "Correct answer is B: 350"},
+    {"id": 11, "s": "A", "cat": "Quantitative Aptitude", "q": "The product of two consecutive positive even numbers is 168. Find the larger number.", "o": ["16", "12", "13", "14"], "exp": "Correct answer is D: 14"},
+    {"id": 12, "s": "A", "cat": "Quantitative Aptitude", "q": "A sum amounts to Rs.9,800 in 5 years and Rs.12,005 in 8 years at simple interest. Find the principal.", "o": ["Rs.6,125", "Rs.6,500", "Rs.7,000", "Rs.5,000"], "exp": "Correct answer is A: Rs.6,125"},
+    {"id": 13, "s": "A", "cat": "Quantitative Aptitude", "q": "If the radius of a circle is increased by 50%, by what percent does its area increase?", "o": ["125%", "100%", "50%", "150%"], "exp": "Correct answer is A: 125%"},
+    {"id": 14, "s": "A", "cat": "Quantitative Aptitude", "q": "A can do a work in 15 days and B in 10 days. They work together for 3 days, then A leaves. In how many more days will B finish the remaining work?", "o": ["4 days", "5 days", "6 days", "7 days"], "exp": "Correct answer is B: 5 days"},
+    {"id": 15, "s": "A", "cat": "Quantitative Aptitude", "q": "The marked price of a shirt is Rs.1,200. After two successive discounts of 20% and 10%, what is the final selling price?", "o": ["Rs.816", "Rs.864", "Rs.900", "Rs.840"], "exp": "Correct answer is B: Rs.864"},
+    {"id": 16, "s": "A", "cat": "Quantitative Aptitude", "q": "Three numbers are in the ratio 2:3:4 and their sum is 180. Find the largest number.", "o": ["60", "80", "40", "90"], "exp": "Correct answer is B: 80"},
+    {"id": 17, "s": "A", "cat": "Quantitative Aptitude", "q": "A man spends 75% of his income. If his income rises by 20% and his expenditure by 10%, by what percent do his savings increase?", "o": ["50%", "60%", "45%", "40%"], "exp": "Correct answer is A: 50%"},
+    {"id": 18, "s": "A", "cat": "Quantitative Aptitude", "q": "How many 3-digit numbers can be formed using the digits 1, 2, 3, 4, 5 without repetition?", "o": ["125", "120", "60", "100"], "exp": "Correct answer is C: 60"},
+    {"id": 19, "s": "A", "cat": "Reasoning", "q": "If \"A $ B\" means A is the father of B, and \"A # B\" means A is the sister of B, then what does \"P $ Q # R\" mean?", "o": ["P is the grandfather of R", "P is the father of R", "P is the uncle of R", "P is the brother of R"], "exp": "Correct answer is B: P is the father of R"},
+    {"id": 20, "s": "A", "cat": "Reasoning", "q": "Find the missing term: 7, 14, 28, 56, ?", "o": ["112", "98", "110", "120"], "exp": "Correct answer is A: 112"},
+    {"id": 21, "s": "A", "cat": "Reasoning", "q": "Find the odd one out: 3, 5, 7, 9, 11, 13", "o": ["9", "7", "5", "11"], "exp": "Correct answer is A: 9"},
+    {"id": 22, "s": "A", "cat": "Reasoning", "q": "In a code, CAT = 24 and DOG = 26 (sum of alphabet positions). What is the value of COW?", "o": ["41", "42", "40", "38"], "exp": "Correct answer is A: 41"},
+    {"id": 23, "s": "A", "cat": "Reasoning", "q": "Pointing to a man, a woman said, \"His mother is the only daughter of my mother.\" How is the woman related to the man?", "o": ["Mother", "Aunt", "Grandmother", "Sister"], "exp": "Correct answer is A: Mother"},
+    {"id": 24, "s": "A", "cat": "Reasoning", "q": "A is taller than B but shorter than C. D is taller than A but shorter than C. Who is the tallest?", "o": ["A", "C", "B", "D"], "exp": "Correct answer is B: C"},
+    {"id": 25, "s": "A", "cat": "Reasoning", "q": "Find the next term in the series: AZ, BY, CX, DW, ?", "o": ["EV", "FV", "DV", "EW"], "exp": "Correct answer is A: EV"},
+    {"id": 26, "s": "A", "cat": "Reasoning", "q": "If today is Wednesday, what day will it be after 100 days?", "o": ["Saturday", "Thursday", "Sunday", "Friday"], "exp": "Correct answer is D: Friday"},
+    {"id": 27, "s": "A", "cat": "Reasoning", "q": "Statements: Some books are pens. All pens are tables.\nConclusions: I. Some books are tables. II. All tables are pens.\nWhich follows?", "o": ["Only II follows", "Only I follows", "Neither follows", "Both I and II follow"], "exp": "Correct answer is B: Only I follows"},
+    {"id": 28, "s": "A", "cat": "Reasoning", "q": "A man walks 4 km north, then turns east and walks 3 km. How far is he from the starting point?", "o": ["7 km", "5 km", "1 km", "6 km"], "exp": "Correct answer is B: 5 km"},
+    {"id": 29, "s": "A", "cat": "Reasoning", "q": "Find the next term: 1, 1, 2, 3, 5, 8, ?", "o": ["11", "15", "13", "12"], "exp": "Correct answer is C: 13"},
+    {"id": 30, "s": "A", "cat": "Reasoning", "q": "P is the mother of Q. Q is the wife of R. S is the son of R. How is P related to S?", "o": ["Mother", "Grandmother", "Aunt", "Sister"], "exp": "Correct answer is B: Grandmother"},
+    {"id": 31, "s": "A", "cat": "Reasoning", "q": "In a code, \"247\" means \"spread the news\", \"147\" means \"gather the news\", and \"367\" means \"tell the truth\". Which digit stands for \"news\"?", "o": ["2", "4", "1", "7"], "exp": "Correct answer is B: 4"},
+    {"id": 32, "s": "A", "cat": "Reasoning", "q": "If \"+\" means multiply, \"x\" means subtract, \"-\" means divide, and \"divide\" means add, find: 16 divide 4 - 2 + 8 x 4", "o": ["32", "28", "20", "24"], "exp": "Correct answer is B: 28"},
+    {"id": 33, "s": "A", "cat": "Reasoning", "q": "Arrange in logical sequence: 1. Seed  2. Flower  3. Fruit  4. Plant  5. Tree", "o": ["1, 4, 5, 2, 3", "1, 2, 4, 5, 3", "1, 4, 2, 5, 3", "1, 5, 4, 2, 3"], "exp": "Correct answer is A: 1, 4, 5, 2, 3"},
+    {"id": 34, "s": "A", "cat": "Reasoning", "q": "A clock loses 5 minutes every hour. If set correctly at 12:00 noon, what time will it show when the correct time is 6:00 PM?", "o": ["6:30 PM", "5:25 PM", "5:00 PM", "5:30 PM"], "exp": "Correct answer is D: 5:30 PM"},
+    {"id": 35, "s": "A", "cat": "English – Reading Comprehension", "q": "Read the following passage:\n\nThe Internet of Things (IoT) refers to the network of physical devices embedded with sensors and software that connect and exchange data over the internet. From smart thermostats to wearable fitness trackers, IoT devices collect vast amounts of information to automate tasks and improve efficiency. However, this connectivity also raises serious security concerns. Each connected device is a potential entry point for hackers, and many manufacturers prioritise low cost over strong security. As IoT adoption grows, experts stress that building security into devices from the design stage — rather than adding it later — is essential to protect users' privacy.\n\n(RC-1) According to the passage, what is the primary purpose of IoT devices?", "o": ["To replace the internet entirely", "To reduce the cost of manufacturing", "To act as entry points for hackers", "To collect data and automate tasks to improve efficiency"], "exp": "Correct answer is D: To collect data and automate tasks to improve efficiency"},
+    {"id": 36, "s": "A", "cat": "English – Reading Comprehension", "q": "(RC-1) Which security concern does the passage highlight?", "o": ["Each connected device can be an entry point for hackers", "IoT devices are far too expensive for ordinary users", "Manufacturers add too much security to devices", "IoT devices cannot connect to the internet at all"], "exp": "Correct answer is A: Each connected device can be an entry point for hackers"},
+    {"id": 37, "s": "A", "cat": "English – Reading Comprehension", "q": "(RC-1) What do experts recommend, according to the passage?", "o": ["Adding security only after a hack occurs", "Lowering the cost of devices further", "Avoiding all IoT devices completely", "Building security into devices from the design stage"], "exp": "Correct answer is D: Building security into devices from the design stage"},
+    {"id": 38, "s": "A", "cat": "English – Reading Comprehension", "q": "(RC-1) The word \"prioritise\" in the passage most nearly means:", "o": ["give precedence to", "ignore completely", "reduce sharply", "delay indefinitely"], "exp": "Correct answer is A: give precedence to"},
+    {"id": 39, "s": "A", "cat": "English – Reading Comprehension", "q": "Read the following passage:\n\nArtificial intelligence has moved from research labs into everyday life. Recommendation systems suggest what we watch and buy, while language models can draft emails and answer questions. Yet AI is only as good as the data it learns from. If the training data contains biases, the system may reproduce or even amplify them. This is why researchers emphasise the importance of diverse, high-quality datasets and ongoing human oversight. AI is a powerful tool, but it is not a substitute for human judgement.\n\n(RC-2) According to the passage, what determines the quality of an AI system?", "o": ["The size of the company that builds it", "The speed of the computer", "The data it learns from", "The number of users it has"], "exp": "Correct answer is C: The data it learns from"},
+    {"id": 40, "s": "A", "cat": "English – Reading Comprehension", "q": "(RC-2) What problem can arise if the training data is biased?", "o": ["The training data will delete itself", "The system will simply run slower", "The system will refuse to function", "The system may reproduce or amplify the biases"], "exp": "Correct answer is D: The system may reproduce or amplify the biases"},
+    {"id": 41, "s": "A", "cat": "English – Reading Comprehension", "q": "(RC-2) What is the main message of the passage?", "o": ["AI is powerful but still needs good data and human oversight", "AI should completely replace human judgement", "AI works perfectly even without any data", "AI is useless in everyday life"], "exp": "Correct answer is A: AI is powerful but still needs good data and human oversight"},
+    {"id": 42, "s": "A", "cat": "English – Vocabulary", "q": "Choose the word most similar in meaning to AMPLIFY.", "o": ["Conceal", "Ignore", "Reduce", "Intensify"], "exp": "Correct answer is D: Intensify"},
+    {"id": 43, "s": "A", "cat": "English – Vocabulary", "q": "Choose the word most OPPOSITE in meaning to DIVERSE.", "o": ["Uniform", "Mixed", "Assorted", "Varied"], "exp": "Correct answer is A: Uniform"},
+    {"id": 44, "s": "A", "cat": "English – Grammar", "q": "Fill in the blank: \"If I ______ rich, I would travel the world.\"", "o": ["were", "will be", "was", "am"], "exp": "Correct answer is A: were"},
+    {"id": 45, "s": "A", "cat": "English – Spelling", "q": "Pick the correctly spelled word.", "o": ["Maintenence", "Maintenance", "Maintainance", "Maintanance"], "exp": "Correct answer is B: Maintenance"},
+    {"id": 46, "s": "A", "cat": "English – One-word Substitution", "q": "Choose the one word for: \"A government by the people, for the people.\"", "o": ["Democracy", "Anarchy", "Aristocracy", "Monarchy"], "exp": "Correct answer is A: Democracy"},
+    {"id": 47, "s": "A", "cat": "English – Idioms", "q": "What does the idiom \"once in a blue moon\" mean?", "o": ["Every month", "Only at night", "Very rarely", "Very frequently"], "exp": "Correct answer is C: Very rarely"},
+    {"id": 48, "s": "A", "cat": "English – Punctuation", "q": "Which of the following sentences is correctly punctuated?", "o": ["She asked 'Where are you going.'", "She asked, 'Where are you going?'", "She asked 'where are you going'?", "She asked, where are you going?"], "exp": "Correct answer is B: She asked, 'Where are you going?'"},
+    {"id": 49, "s": "A", "cat": "Computer Fundamentals", "q": "Which of the following is an OUTPUT device?", "o": ["Mouse", "Scanner", "Keyboard", "Monitor"], "exp": "Correct answer is D: Monitor"},
+    {"id": 50, "s": "A", "cat": "Computer Fundamentals", "q": "Which component is often called the \"brain\" of the computer?", "o": ["RAM", "CPU", "Hard Disk", "Monitor"], "exp": "Correct answer is B: CPU"},
+    {"id": 51, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int a = 5, b = 2;\n    printf(\"%d\", a & b);\n    return 0;\n}", "o": ["0", "7", "2", "1"], "exp": "Correct answer is A: 0"},
+    {"id": 52, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int i;\n    for (i = 0; i < 3; i++);\n    printf(\"%d\", i);\n    return 0;\n}", "o": ["3", "0", "It is an infinite loop", "2"], "exp": "Correct answer is A: 3"},
+    {"id": 53, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    char c = 'A';\n    printf(\"%d\", c + 1);\n    return 0;\n}", "o": ["65", "66", "Letter B", "1"], "exp": "Correct answer is B: 66"},
+    {"id": 54, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int x = 10;\n    int *p = &x;\n    *p = *p + 5;\n    printf(\"%d\", x);\n    return 0;\n}", "o": ["15", "10", "Compilation error", "5"], "exp": "Correct answer is A: 15"},
+    {"id": 55, "s": "B", "cat": "C Programming", "q": "What is the value of the expression 5 << 2 in C?", "o": ["10", "7", "25", "20"], "exp": "Correct answer is D: 20"},
+    {"id": 56, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int arr[3] = {10, 20, 30};\n    printf(\"%d\", *(arr + 1) + 1);\n    return 0;\n}", "o": ["21", "30", "20", "11"], "exp": "Correct answer is A: 21"},
+    {"id": 57, "s": "B", "cat": "C Programming", "q": "Which format specifier is used to print an unsigned integer in C?", "o": ["%c", "%u", "%d", "%f"], "exp": "Correct answer is B: %u"},
+    {"id": 58, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int n = 7;\n    printf(\"%d\", n >> 1);\n    return 0;\n}", "o": ["3", "14", "7", "4"], "exp": "Correct answer is A: 3"},
+    {"id": 59, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nvoid change(int x) { x = 100; }\nint main() {\n    int a = 50;\n    change(a);\n    printf(\"%d\", a);\n    return 0;\n}", "o": ["garbage value", "100", "50", "0"], "exp": "Correct answer is C: 50"},
+    {"id": 60, "s": "B", "cat": "C Programming", "q": "What does the \"const\" qualifier indicate when applied to a variable?", "o": ["The variable becomes a constant function", "Its value cannot be changed after initialization", "The variable becomes global", "The variable is stored in ROM"], "exp": "Correct answer is B: Its value cannot be changed after initialization"},
+    {"id": 61, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int a = 1;\n    int b = (a == 1) ? 10 : 20;\n    printf(\"%d\", b);\n    return 0;\n}", "o": ["1", "10", "20", "0"], "exp": "Correct answer is B: 10"},
+    {"id": 62, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int sum = 0;\n    for (int i = 1; i <= 4; i++)\n        sum += i;\n    printf(\"%d\", sum);\n    return 0;\n}", "o": ["6", "4", "10", "9"], "exp": "Correct answer is C: 10"},
+    {"id": 63, "s": "B", "cat": "C Programming", "q": "Which header file must be included to use printf() and scanf()?", "o": ["stdlib.h", "stdio.h", "string.h", "conio.h"], "exp": "Correct answer is B: stdio.h"},
+    {"id": 64, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int x = 3, y = 4;\n    printf(\"%d\", x++ + ++y);\n    return 0;\n}", "o": ["8", "10", "9", "7"], "exp": "Correct answer is A: 8"},
+    {"id": 65, "s": "B", "cat": "C Programming", "q": "What is the purpose of the \"break\" statement inside a loop?", "o": ["It restarts the loop from the beginning", "It exits the loop immediately", "It skips the current iteration and continues with the next", "It pauses the loop temporarily"], "exp": "Correct answer is B: It exits the loop immediately"},
+    {"id": 66, "s": "B", "cat": "C Programming", "q": "What is the output?\n#include <stdio.h>\nint main() {\n    int a[] = {2, 4, 6, 8};\n    int n = sizeof(a) / sizeof(a[0]);\n    printf(\"%d\", n);\n    return 0;\n}", "o": ["16", "8", "1", "4"], "exp": "Correct answer is D: 4"},
+    {"id": 67, "s": "B", "cat": "Data Structures", "q": "What is the minimum number of stacks required to implement a queue?", "o": ["1", "2", "4", "3"], "exp": "Correct answer is B: 2"},
+    {"id": 68, "s": "B", "cat": "Data Structures", "q": "Which of the following is a NON-LINEAR data structure?", "o": ["Stack", "Queue", "Array", "Tree"], "exp": "Correct answer is D: Tree"},
+    {"id": 69, "s": "B", "cat": "Data Structures", "q": "In a singly linked list, deleting the last node (with only the head pointer available) takes:", "o": ["O(1)", "O(n)", "O(n^2)", "O(log n)"], "exp": "Correct answer is B: O(n)"},
+    {"id": 70, "s": "B", "cat": "Data Structures", "q": "What is the prefix form of the infix expression (A + B) * C?", "o": ["+ A B * C", "* A + B C", "* + A B C", "+ * A B C"], "exp": "Correct answer is C: * + A B C"},
+    {"id": 71, "s": "B", "cat": "Data Structures", "q": "A binary tree has 15 nodes. What is its minimum possible height (root at height 0)?", "o": ["15", "4", "7", "3"], "exp": "Correct answer is D: 3"},
+    {"id": 72, "s": "B", "cat": "Data Structures", "q": "In which depth-first traversal is the root node visited BEFORE its subtrees?", "o": ["Postorder", "Inorder", "Preorder", "Reverse inorder"], "exp": "Correct answer is C: Preorder"},
+    {"id": 73, "s": "B", "cat": "Data Structures", "q": "Which combination of data structures implements an efficient O(1) LRU cache?", "o": ["A hash map plus a doubly linked list", "A simple stack", "A binary search tree", "A single array"], "exp": "Correct answer is A: A hash map plus a doubly linked list"},
+    {"id": 74, "s": "B", "cat": "Data Structures", "q": "The worst-case time complexity of binary search on a sorted array of n elements is:", "o": ["O(1)", "O(n)", "O(log n)", "O(n log n)"], "exp": "Correct answer is C: O(log n)"},
+    {"id": 75, "s": "B", "cat": "Data Structures", "q": "A circular linked list is one in which:", "o": ["Nodes must be physically stored in a circle in memory", "There is no head node at all", "The last node points back to the first node", "Every node points to itself"], "exp": "Correct answer is C: The last node points back to the first node"},
+    {"id": 76, "s": "B", "cat": "Data Structures", "q": "In a full binary tree where every internal node has exactly 2 children, if there are n internal nodes, the number of leaf nodes is:", "o": ["n - 1", "2n", "n", "n + 1"], "exp": "Correct answer is D: n + 1"},
+    {"id": 77, "s": "B", "cat": "Data Structures", "q": "Which sorting algorithm is stable AND has O(n log n) worst-case time complexity?", "o": ["Merge sort", "Quick sort", "Selection sort", "Heap sort"], "exp": "Correct answer is A: Merge sort"},
+    {"id": 78, "s": "B", "cat": "OOP in C++", "q": "What is it called when a derived class provides its own implementation of a method already defined in the base class?", "o": ["Method overloading", "Encapsulation", "Data hiding", "Method overriding"], "exp": "Correct answer is D: Method overriding"},
+    {"id": 79, "s": "B", "cat": "OOP in C++", "q": "How is a pure virtual function declared in C++?", "o": ["void func() = 0;", "virtual void func() {}", "virtual void func() = 0;", "pure void func();"], "exp": "Correct answer is C: virtual void func() = 0;"},
+    {"id": 80, "s": "B", "cat": "OOP in C++", "q": "A class that contains at least one pure virtual function is called a/an:", "o": ["Friend class", "Concrete class", "Abstract class", "Static class"], "exp": "Correct answer is C: Abstract class"},
+    {"id": 81, "s": "B", "cat": "OOP in C++", "q": "Which of the following is NOT one of the core principles of Object-Oriented Programming?", "o": ["Inheritance", "Pointers", "Polymorphism", "Encapsulation"], "exp": "Correct answer is B: Pointers"},
+    {"id": 82, "s": "B", "cat": "OOP in C++", "q": "In C++, the \"this\" pointer:", "o": ["Points to the current object that invoked the member function", "Is a single static pointer shared by all objects", "Points to the next object in memory", "Points to the base class object"], "exp": "Correct answer is A: Points to the current object that invoked the member function"},
+    {"id": 83, "s": "B", "cat": "OOP in C++", "q": "When an object of a derived class is created, which constructor runs first?", "o": ["Only the derived class constructor runs", "Only the base class constructor runs", "The derived class constructor, then the base class constructor", "The base class constructor, then the derived class constructor"], "exp": "Correct answer is D: The base class constructor, then the derived class constructor"},
+    {"id": 84, "s": "B", "cat": "OOP in C++", "q": "The ability of different classes to respond to the same function call in their own way is called:", "o": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], "exp": "Correct answer is C: Polymorphism"},
+    {"id": 85, "s": "B", "cat": "Operating Systems", "q": "The technique that allows execution of a program larger than the available physical memory is called:", "o": ["Caching", "Virtual memory", "Spooling", "Multiprogramming"], "exp": "Correct answer is B: Virtual memory"},
+    {"id": 86, "s": "B", "cat": "Operating Systems", "q": "Which of the following is NOT a necessary condition for a deadlock?", "o": ["Preemption of resources is allowed", "Mutual exclusion", "Circular wait", "Hold and wait"], "exp": "Correct answer is A: Preemption of resources is allowed"},
+    {"id": 87, "s": "B", "cat": "Operating Systems", "q": "In Round Robin scheduling, which parameter most directly affects performance?", "o": ["The time quantum (time slice)", "The number of CPUs", "The process priority number", "The burst time only"], "exp": "Correct answer is A: The time quantum (time slice)"},
+    {"id": 88, "s": "B", "cat": "Operating Systems", "q": "A program in execution is called a:", "o": ["Process", "Program", "Function", "Thread"], "exp": "Correct answer is A: Process"},
+    {"id": 89, "s": "B", "cat": "Operating Systems", "q": "Which memory allocation strategy chooses the smallest free block that is large enough for a process?", "o": ["Worst fit", "Best fit", "Next fit", "First fit"], "exp": "Correct answer is B: Best fit"},
+    {"id": 90, "s": "B", "cat": "Operating Systems", "q": "The core part of the operating system that is loaded at boot time and stays resident in memory is the:", "o": ["Compiler", "Kernel", "Shell", "Loader"], "exp": "Correct answer is B: Kernel"},
+    {"id": 91, "s": "B", "cat": "Networking", "q": "Which protocol is used to SEND email from a client to a mail server?", "o": ["POP3", "IMAP", "SMTP", "HTTP"], "exp": "Correct answer is C: SMTP"},
+    {"id": 92, "s": "B", "cat": "Networking", "q": "In the TCP/IP model, the IP address is used at which layer?", "o": ["The Internet (Network) layer", "The Link layer", "The Transport layer", "The Application layer"], "exp": "Correct answer is A: The Internet (Network) layer"},
+    {"id": 93, "s": "B", "cat": "Networking", "q": "How many bits are there in a MAC address?", "o": ["64", "48", "32", "16"], "exp": "Correct answer is B: 48"},
+    {"id": 94, "s": "B", "cat": "Networking", "q": "Which of the following is a valid PRIVATE IPv4 address range?", "o": ["8.8.8.0 to 8.8.8.255", "172.0.0.0 to 172.15.255.255", "192.168.0.0 to 192.168.255.255", "11.0.0.0 to 11.255.255.255"], "exp": "Correct answer is C: 192.168.0.0 to 192.168.255.255"},
+    {"id": 95, "s": "B", "cat": "Networking", "q": "How many usable host addresses are there in a /24 IPv4 subnet?", "o": ["510", "256", "254", "255"], "exp": "Correct answer is C: 254"},
+    {"id": 96, "s": "B", "cat": "Big Data & AI Basics", "q": "The original \"three Vs\" used to characterize Big Data are:", "o": ["Velocity, Volume, Visualization", "Variety, Validity, Volume", "Volume, Value, Veracity", "Volume, Velocity, Variety"], "exp": "Correct answer is D: Volume, Velocity, Variety"},
+    {"id": 97, "s": "B", "cat": "Big Data & AI Basics", "q": "In the Hadoop ecosystem, which component provides distributed STORAGE?", "o": ["MapReduce", "HDFS", "YARN", "Pig"], "exp": "Correct answer is B: HDFS"},
+    {"id": 98, "s": "B", "cat": "Big Data & AI Basics", "q": "Which type of machine learning uses LABELLED training data to learn an input-to-output mapping?", "o": ["Supervised learning", "Unsupervised learning", "Clustering", "Reinforcement learning"], "exp": "Correct answer is A: Supervised learning"},
+    {"id": 99, "s": "B", "cat": "Big Data & AI Basics", "q": "In machine learning, \"overfitting\" describes a model that:", "o": ["Cannot be trained at all", "Performs poorly on both training and test data", "Performs well on training data but poorly on unseen data", "Has far too few parameters to learn"], "exp": "Correct answer is C: Performs well on training data but poorly on unseen data"},
+    {"id": 100, "s": "B", "cat": "Big Data & AI Basics", "q": "Which programming model does Hadoop use to process large datasets in parallel?", "o": ["ZooKeeper", "MapReduce", "HBase", "HDFS"], "exp": "Correct answer is B: MapReduce"}
   ]}
 };
 
@@ -1479,9 +1619,13 @@ function selectSet(id) {
   saveS();
   showSetInfoPanel(id);
   const t0 = CFG.startTime ? new Date(CFG.startTime) : null;
+  setStartLabel(t0);
   if (!t0 || Date.now() >= t0.getTime()) {
     document.getElementById('start-now-btn').style.display = 'inline-block';
+    document.getElementById('countdown-display').textContent = 'READY';
   } else {
+    document.getElementById('countdown-display').textContent = '--:--:--';
+    countdownToStart(t0);
   }
 }
 
@@ -1511,10 +1655,37 @@ window.addEventListener('load', () => {
     const card = document.getElementById('card-' + S.selectedSet);
     if (card) card.classList.add('selected');
     showSetInfoPanel(S.selectedSet);
-    document.getElementById('start-now-btn').style.display = 'inline-block';
+    const t0 = CFG.startTime ? new Date(CFG.startTime) : null;
+    setStartLabel(t0);
+    if (!t0 || Date.now() >= t0.getTime()) {
+      document.getElementById('start-now-btn').style.display = 'inline-block';
+      document.getElementById('countdown-display').textContent = 'READY';
+    } else {
+      countdownToStart(t0);
+    }
   }
 });
 
+function setStartLabel(t0) {
+  const el = document.getElementById('start-time-label');
+  if (!el) return;
+  el.textContent = t0
+    ? t0.toLocaleString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZoneName:'short'})
+    : 'Opens immediately when you load this page';
+}
+
+function countdownToStart(t0) {
+  const el = document.getElementById('countdown-display');
+  const tick = () => {
+    const d = t0 - Date.now();
+    if (d <= 0) { el.textContent = 'Starting…'; if (S.selectedSet) startExam(); return; }
+    const h = String(Math.floor(d/3600000)).padStart(2,'0');
+    const m = String(Math.floor(d%3600000/60000)).padStart(2,'0');
+    const s = String(Math.floor(d%60000/1000)).padStart(2,'0');
+    el.textContent = h+':'+m+':'+s;
+  };
+  tick(); setInterval(tick, 1000);
+}
 
 function startExam() {
   if (!S.selectedSet) { alert('Please select a practice set first.'); return; }
@@ -1694,8 +1865,8 @@ function renderQ() {
 }
 
 function pick(i) {
-  S.ans[S.cur] = (S.ans[S.cur]===i) ? null : i;
-  document.querySelectorAll('.opt-item').forEach((el,idx)=>el.classList.toggle('selected',idx===S.ans[S.cur]));
+  S.ans[S.cur]=i;
+  document.querySelectorAll('.opt-item').forEach((el,idx)=>el.classList.toggle('selected',idx===i));
   refreshPalette(); saveS();
 }
 
@@ -1855,13 +2026,12 @@ function filterSol(type,btn) {
     if (bad){e.preventDefault();e.stopPropagation();}
   },true);
   const THRESH=160; let dtOpen=false;
-  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
   const overlay=document.createElement('div');
   overlay.id='dt-overlay';
   overlay.innerHTML='<div style="background:white;padding:40px 32px;border-radius:12px;text-align:center;max-width:380px;box-shadow:0 8px 32px rgba(0,0,0,0.3)"><div style="font-size:2rem;margin-bottom:12px;">⚠️</div><h2 style="color:#b71c1c;margin-bottom:10px;">Developer Tools Detected</h2><p style="color:#444;line-height:1.6">Close Developer Tools to continue the exam.<br>The timer is still running.</p></div>';
   Object.assign(overlay.style,{display:'none',position:'fixed',inset:'0',background:'rgba(0,0,0,0.85)',zIndex:'9999',alignItems:'center',justifyContent:'center'});
   document.body.appendChild(overlay);
-  if (!isMobile) setInterval(()=>{
+  setInterval(()=>{
     const exam=document.getElementById('exam-screen').style.display!=='none';
     if (!exam) return;
     const open=(window.outerWidth-window.innerWidth>THRESH)||(window.outerHeight-window.innerHeight>THRESH);
