@@ -783,7 +783,8 @@ function selectSet(id) {
   document.querySelectorAll('.set-card').forEach(c => c.classList.remove('selected'));
   const card = document.getElementById('card-' + id);
   if (card) card.classList.add('selected');
-  S.selectedSet = id;
+  // Always reset state when user picks a set from the home screen
+  S = { selectedSet: id, cur: 0, ans: [], marked: [], aDone: false, bDone: false, done: false, tLeft: CFG.secDuration, tStamp: null, nick: S.nick || '' };
   initCurrentSet();
   saveS();
   showSetInfoPanel(id);
