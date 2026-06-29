@@ -520,13 +520,132 @@ s5_data = [
 ]
 
 # ================================================================
+#  SET 6 — Advanced Pro (100 questions, Sections A+B)
+#  Harder questions tuned to C-CAT exam boundary
+# ================================================================
+s6_data = [
+  # ---- SECTION A : Quantitative Aptitude (Q1-Q18) ----
+  ['A','Quantitative Aptitude','A train 200 m long passes a platform 300 m long in 25 seconds. Find its speed in km/h.',['60 km/h','72 km/h','80 km/h','90 km/h'],1],
+  ['A','Quantitative Aptitude','Two pipes A and B can fill a tank in 12 and 18 hours respectively. Pipe C can empty it in 9 hours. If all three are opened simultaneously, how long will it take to fill the tank?',['36 hours','24 hours','18 hours','72 hours'],0],
+  ['A','Quantitative Aptitude','A boat goes 48 km upstream and 72 km downstream in 12 hours. It also goes 36 km upstream and 108 km downstream in 12 hours. Find the speed of the stream.',['3 km/h','4 km/h','6 km/h','8 km/h'],2],
+  ['A','Quantitative Aptitude','The compound interest on a sum at 20% per annum for 3 years is Rs.7,280. Find the principal.',['Rs.8,000','Rs.12,000','Rs.10,000','Rs.9,000'],2],
+  ['A','Quantitative Aptitude','In a mixture of 80 litres the ratio of milk to water is 3:1. How much water must be added to make the ratio 2:3?',['60 litres','70 litres','80 litres','40 litres'],1],
+  ['A','Quantitative Aptitude','A and B together complete a work in 8 days, B and C in 12 days, and A, B and C together in 6 days. In how many days can A and C together finish it?',['10 days','8 days','6 days','12 days'],1],
+  ['A','Quantitative Aptitude','Two trains start simultaneously from two stations 600 km apart, heading towards each other. Their speeds are in the ratio 2:3. How far from the first station do they meet?',['200 km','240 km','300 km','360 km'],1],
+  ['A','Quantitative Aptitude','Find the smallest number that, when divided by 3, 4, 5, and 6, leaves remainders 2, 3, 4, and 5 respectively.',['59','61','55','119'],0],
+  ['A','Quantitative Aptitude','A person invests Rs.5,000 at 10% p.a. and Rs.4,000 at 12% p.a., both at simple interest. What is the total interest after 3 years?',['Rs.2,700','Rs.3,000','Rs.2,940','Rs.2,880'],2],
+  ['A','Quantitative Aptitude','A circular path has a circumference of 300 m. Two persons start from the same point and walk in opposite directions at 5 m/s and 7 m/s. After how many seconds do they meet for the first time?',['20 s','25 s','30 s','35 s'],1],
+  ['A','Quantitative Aptitude','A sells a bicycle to B at 25% gain; B sells it to C at 20% loss. If C pays Rs.1,800, what was A\'s original cost price?',['Rs.1,440','Rs.1,600','Rs.1,800','Rs.2,000'],2],
+  ['A','Quantitative Aptitude','The ages of A, B, and C are in the ratio 2:3:5. Six years later the ratio becomes 3:4:6. Find the sum of their present ages.',['50','55','60','65'],2],
+  ['A','Quantitative Aptitude','A box has 6 red, 4 blue, and 5 green balls. Two balls are drawn at random. What is the probability they are of different colours?',['74/105','31/105','8/15','2/3'],0],
+  ['A','Quantitative Aptitude','The sum of the first n terms of an AP is 3n² + 4n. Find the 10th term.',['57','61','64','67'],1],
+  ['A','Quantitative Aptitude','A product is marked 40% above cost price. A 20% discount is given, followed by a further 10% special discount. What is the overall profit or loss percent?',['0.8% profit','2% loss','1% profit','2% profit'],0],
+  ['A','Quantitative Aptitude','In how many distinct ways can the letters of the word MISSISSIPPI be arranged?',['34,650','27,720','55,440','3,465'],0],
+  ['A','Quantitative Aptitude','A shopkeeper sells two articles at Rs.990 each — gaining 10% on one and losing 10% on the other. What is the overall result?',['No profit, no loss','1% profit','1% loss','2% loss'],2],
+  ['A','Quantitative Aptitude','A sphere of radius 3 cm is melted and recast into a cone of height 9 cm. Find the radius of the base of the cone.',['2√3 cm','2 cm','3 cm','6 cm'],0],
+  # ---- SECTION A : Reasoning (Q19-Q34) ----
+  ['A','Reasoning','Find the next term in the series: 5, 11, 23, 47, 95, ?',['189','191','193','187'],1],
+  ['A','Reasoning','A person starts at P, walks 6 km North, turns right and walks 8 km, turns right and walks 15 km, then turns left and walks 4 km. How far is he from P?',['15 km, South-East','13 km, East','15 km, East','17 km, South-East'],0],
+  ['A','Reasoning','In a code, MANGO is written as NBOHP. How is APPLE coded?',['BQPLE','BQQMF','CQRMG','BQQNF'],1],
+  ['A','Reasoning','Statements: All books are pens. No pen is a pencil. Some pencils are erasers.\nConclusion I: No book is a pencil.\nConclusion II: Some erasers are pens.\nWhich conclusion(s) follow?',['Only I','Only II','Neither','Both I and II'],0],
+  ['A','Reasoning','Find the missing number in the series: 3, 8, 15, 24, 35, ?',['46','47','48','49'],2],
+  ['A','Reasoning','Sudha is older than Priya but younger than Riya. Meena is older than Riya. Tina is older than Sudha but younger than Riya. Who is the second oldest?',['Sudha','Meena','Tina','Riya'],3],
+  ['A','Reasoning','What is the angle between the hour and minute hands of a clock at 8:30?',['90°','75°','60°','80°'],1],
+  ['A','Reasoning','An Euler path through a graph exists only if the number of vertices with odd degree is:',['Exactly 4','Any even number','0 or 2','1'],2],
+  ['A','Reasoning','In a group of 50 students, 30 play Cricket, 25 play Football, and 10 play both. How many play neither?',['5','10','15','20'],0],
+  ['A','Reasoning','Statements: All engineers are graduates. Some graduates are scientists.\nWhich conclusion is definitely true?',['Some engineers are scientists','Some scientists are graduates','All scientists are graduates','None of the above'],1],
+  ['A','Reasoning','Find the next term: AB, EF, IJ, MN, ?',['OP','QR','ST','PQ'],1],
+  ['A','Reasoning','A cube is painted red on all faces and cut into 27 equal smaller cubes. How many small cubes have exactly 2 faces painted?',['8','12','6','24'],1],
+  ['A','Reasoning','An input sequence 74 36 89 12 56 41 is sorted by repeatedly moving the smallest unsorted element to the front. What does Step 3 produce?',['12 36 41 89 56 74','12 36 41 74 89 56','12 36 41 56 74 89','12 36 41 74 56 89'],1],
+  ['A','Reasoning','A rectangle has a perimeter of 48 cm and its length is 3 times its breadth. Find the length of its diagonal.',['6√10 cm','12√2 cm','18 cm','6√5 cm'],0],
+  ['A','Reasoning','A man rows at 8 km/h in still water; the river flows at 2 km/h. He rows to a point and back in 3 hours. Find the one-way distance.',['10 km','11.25 km','12 km','15 km'],1],
+  ['A','Reasoning','If x + 1/x = 3, find x³ + 1/x³.',['18','21','27','15'],0],
+  # ---- SECTION A : English – Reading Comprehension Passage 1 (Q35-Q38) ----
+  ['A','English – Reading Comprehension','Read the following passage:\n\nBlockchain is a distributed ledger technology that records transactions across a network of computers, ensuring that no single entity controls the entire chain. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data. Once recorded, data in any block cannot be altered retroactively without altering all subsequent blocks, which requires consensus from the network majority. Originally devised for the digital currency Bitcoin, blockchain now finds applications in supply chain management, healthcare records, and smart contracts. However, critics argue that public blockchains consume enormous amounts of energy, with Bitcoin mining alone consuming more electricity than some entire countries.\n\n(RC-1) What makes it difficult to alter data in a blockchain?',['All data is stored in a central server','Blocks have no timestamps','Altering one block requires altering all subsequent blocks and network consensus','The chain is managed by a single administrator'],2],
+  ['A','English – Reading Comprehension','(RC-1) According to the passage, what was blockchain originally developed for?',['Supply chain management','Healthcare records','Smart contracts','Digital currency (Bitcoin)'],3],
+  ['A','English – Reading Comprehension','(RC-1) What criticism do opponents of public blockchains raise?',['They are too centralised','They are easy to hack','They consume enormous amounts of energy','They cannot store transaction data'],2],
+  ['A','English – Reading Comprehension','(RC-1) What does each block in a blockchain contain, according to the passage?',['A cryptographic hash of the previous block, a timestamp, and transaction data','Only transaction data and user IDs','A list of all future transactions','Just the hash of the next block'],0],
+  # ---- SECTION A : English – Reading Comprehension Passage 2 (Q39-Q41) ----
+  ['A','English – Reading Comprehension','Read the following passage:\n\nQuantum computing harnesses the principles of quantum mechanics — superposition and entanglement — to process information in fundamentally different ways from classical computers. A classical bit is always either 0 or 1, whereas a quantum bit (qubit) can exist in both states simultaneously through superposition. This allows quantum computers to evaluate many possible solutions to a problem at once. Entanglement enables qubits that are physically separated to be correlated, so that the state of one instantly influences the other. While quantum computers hold immense promise for cryptography, drug discovery, and optimisation, they are extremely sensitive to environmental interference (decoherence) and currently operate reliably only at temperatures close to absolute zero.\n\n(RC-2) What is the key difference between a classical bit and a qubit?',['A classical bit is faster than a qubit','A qubit can exist in both 0 and 1 states simultaneously through superposition','Qubits only work with binary code','Classical bits require quantum entanglement'],1],
+  ['A','English – Reading Comprehension','(RC-2) What does quantum entanglement enable?',['Qubits to function without electricity','Faster classical computation','Correlated qubits such that the state of one instantly influences the other','A qubit to stay at a fixed temperature'],2],
+  ['A','English – Reading Comprehension','(RC-2) What is the main practical challenge facing quantum computers, according to the passage?',['They are too large to fit in a building','They require too many classical bits','They are extremely sensitive to environmental interference and need near-absolute-zero temperatures','Qubits cannot be manufactured at scale'],2],
+  # ---- SECTION A : English – Vocabulary & Grammar (Q42-Q50) ----
+  ['A','English – Vocabulary','Choose the word most similar in meaning to UBIQUITOUS.',['Rare','Found everywhere','Ancient','Transparent'],1],
+  ['A','English – Vocabulary','Choose the word most OPPOSITE in meaning to EPHEMERAL.',['Temporary','Fleeting','Permanent','Fragile'],2],
+  ['A','English – Grammar','Fill in the blank: "Neither the manager nor the employees ______ aware of the new policy."',['was','is','were','has been'],2],
+  ['A','English – Idioms','What does the idiom "bite the bullet" mean?',['To eat quickly','To endure a painful situation with courage','To shoot someone','To make a hasty decision'],1],
+  ['A','English – Spelling','Pick the correctly spelled word.',['Accomodation','Acommodation','Accommodation','Acomodation'],2],
+  ['A','English – One-word Substitution','Which word means "a disease that spreads from animals to humans"?',['Epidemic','Endemic','Pandemic','Zoonosis'],3],
+  ['A','English – Grammar','Identify the grammatically correct sentence.',['He don\'t know the answer','She has went to the market','They have already eaten','We was watching TV'],2],
+  ['A','English – Sentence Improvement','Improve the sentence: "The news are very shocking."',['No improvement needed','The news were very shocking','The news is very shocking','The news have been very shocking'],2],
+  ['A','Computer Fundamentals','What does RAM stand for?',['Read Access Memory','Random Access Memory','Rapid Allocation Memory','Read Allocation Module'],1],
+  # ---- SECTION B : C Programming (Q1-Q16) ----
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int a = 2, b = 3;\n    int c = a++ * ++b;\n    printf("%d %d %d", a, b, c);\n    return 0;\n}',['3 4 8','2 4 8','3 3 6','3 4 6'],0],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nvoid swap(int *a, int *b) {\n    *a = *a ^ *b;\n    *b = *a ^ *b;\n    *a = *a ^ *b;\n}\nint main() {\n    int x = 4, y = 7;\n    swap(&x, &y);\n    printf("%d %d", x, y);\n    return 0;\n}',['4 7','7 7','7 4','4 4'],2],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int a[5] = {1,2,3,4,5};\n    int *p = a + 2;\n    printf("%d\\n", *(p-1) + *(p+1));\n    return 0;\n}',['5','6','7','8'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    char s[] = "HELLO";\n    printf("%d\\n", sizeof(s));\n    return 0;\n}',['5','6','7','Depends on system'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int i = 1;\n    while (i++ <= 3)\n        printf("%d ", i);\n    return 0;\n}',['1 2 3','2 3 4','1 2 3 4','2 3 4 5'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint f(int n) {\n    if (n <= 1) return 1;\n    return n * f(n - 2);\n}\nint main() {\n    printf("%d", f(5));\n    return 0;\n}',['120','15','8','6'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int x = 10;\n    int *p = &x, **q = &p;\n    **q = 20;\n    printf("%d", x);\n    return 0;\n}',['10','Address of x','20','Compilation error'],2],
+  ['B','C Programming','Which of the following correctly declares a function pointer that accepts an int argument and returns a float?',['float (*fp)(int)','float *fp(int)','int (*fp)(float)','float fp(int*)'],0],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\n#include <string.h>\nint main() {\n    char s1[20] = "Hello";\n    char s2[] = "World";\n    strcat(s1, s2);\n    printf("%d", strlen(s1));\n    return 0;\n}',['5','10','11','12'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int x = 0x0F & 0xF0;\n    printf("%d", x);\n    return 0;\n}',['255','0','15','240'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int a = 5;\n    int b = a>3 ? a>4 ? 10 : 20 : 30;\n    printf("%d", b);\n    return 0;\n}',['10','20','30','5'],0],
+  ['B','C Programming','What is the key difference between malloc() and calloc()?',['malloc initialises memory to zero; calloc does not','calloc takes two arguments and initialises memory to zero; malloc takes one and does not initialise','calloc allocates on the stack; malloc on the heap','There is no difference'],1],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}};\n    printf("%d", *(*(arr+1)+2));\n    return 0;\n}',['3','5','6','8'],2],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int x = -1;\n    printf("%u\\n", x);\n    return 0;\n}',['−1','0','4294967295','1'],2],
+  ['B','C Programming','Which storage class makes a local variable retain its value between successive function calls?',['auto','register','extern','static'],3],
+  ['B','C Programming','What is the output?\n#include <stdio.h>\nint main() {\n    int i, arr[] = {10,20,30,40,50};\n    for(i=0; i<5; i++) {\n        if(i==3) continue;\n        printf("%d ", arr[i]);\n    }\n    return 0;\n}',['10 20 30 40 50','10 20 30 50','10 20 30','20 30 50'],1],
+  # ---- SECTION B : Data Structures (Q17-Q27) ----
+  ['B','Data Structures','In an AVL tree, the balance factor of a node is defined as:',['Height of right subtree minus height of left subtree','Height of left subtree minus height of right subtree','Number of nodes in left subtree minus right subtree','Depth of right minus left child'],1],
+  ['B','Data Structures','Dijkstra\'s single-source shortest-path algorithm CANNOT be used when the graph contains:',['Directed edges','Weighted edges','Negative weight edges','Disconnected components'],2],
+  ['B','Data Structures','What is the worst-case time complexity of QuickSort?',['O(n log n)','O(n²)','O(n)','O(log n)'],1],
+  ['B','Data Structures','Which data structure provides O(log n) insertion and extraction of the minimum element, making it ideal for a priority queue?',['Linked List','Stack','Heap','Array'],2],
+  ['B','Data Structures','In a B-tree of order m, the minimum number of keys in any non-root node is:',['⌊m/2⌋ - 1','⌈m/2⌉ - 1','m - 1','m/2'],1],
+  ['B','Data Structures','The time complexity of finding all strongly connected components using Kosaraju\'s algorithm is:',['O(V²)','O(V+E)','O(V log V)','O(E log V)'],1],
+  ['B','Data Structures','Which of the following is TRUE about a min-heap?',['The root contains the maximum element','Every parent is greater than or equal to its children','Every parent is less than or equal to its children','It is always a binary search tree'],2],
+  ['B','Data Structures','In a hash table using linear probing, if a key is deleted using lazy deletion (marked as "deleted"), how should the search for a subsequent key treat that slot?',['Stop searching immediately','Treat it as empty and stop','Treat it as occupied and continue probing','Remove all keys after it'],2],
+  ['B','Data Structures','The number of structurally distinct binary trees with n nodes is given by the:',['n-th Fibonacci number','n-th factorial','n-th Catalan number','2ⁿ permutations'],2],
+  ['B','Data Structures','Topological sorting of a graph is possible only when the graph is a:',['Complete graph','Directed acyclic graph (DAG)','Undirected connected graph','Weighted graph'],1],
+  ['B','Data Structures','Which sorting algorithm is most efficient for sorting a singly linked list?',['Quick sort','Heap sort','Merge sort','Bubble sort'],2],
+  # ---- SECTION B : OOP in C++ (Q28-Q34) ----
+  ['B','OOP in C++','What is the output?\n#include <iostream>\nusing namespace std;\nclass A {\npublic:\n    virtual void show() { cout << "A"; }\n};\nclass B : public A {\npublic:\n    void show() { cout << "B"; }\n};\nint main() {\n    A *p = new B();\n    p->show();\n    return 0;\n}',['A','B','AB','Compilation error'],1],
+  ['B','OOP in C++','What is object slicing in C++?',['Cutting an object\'s memory allocation in half','When a derived-class object is assigned to a base-class object, losing the derived-class-specific data','Splitting a class definition across multiple files','Deleting part of an object\'s member variables'],1],
+  ['B','OOP in C++','What is the output?\n#include <iostream>\nusing namespace std;\nclass Base {\npublic:\n    Base()  { cout << "B"; }\n    ~Base() { cout << "~B"; }\n};\nclass Derived : public Base {\npublic:\n    Derived()  { cout << "D"; }\n    ~Derived() { cout << "~D"; }\n};\nint main() { Derived d; return 0; }',['BD~B~D','BD~D~B','DB~B~D','BD~BD'],1],
+  ['B','OOP in C++','Which keyword in C++11 prevents a class from being used as a base class?',['private','final','sealed','static'],1],
+  ['B','OOP in C++','A copy constructor is invoked when:',['A new object is created from an existing object of the same class','An existing object\'s members are reassigned','A pointer to an object is created','A static member is first accessed'],0],
+  ['B','OOP in C++','What is the diamond problem in C++ and how is it resolved?',['Ambiguity from multiple inheritance resolved using virtual inheritance','A runtime error in deep copy resolved using smart pointers','A memory leak from cyclic references resolved using destructors','A template specialisation issue resolved using explicit instantiation'],0],
+  ['B','OOP in C++','What is the output?\n#include <iostream>\nusing namespace std;\nclass X {\n    int val;\npublic:\n    X(int v): val(v){}\n    int operator+(X& o){ return val + o.val; }\n};\nint main() {\n    X a(3), b(4);\n    cout << a + b;\n    return 0;\n}',['34','7','Compilation error','0'],1],
+  # ---- SECTION B : Operating Systems (Q35-Q40) ----
+  ['B','Operating Systems','In the Banker\'s Algorithm for deadlock avoidance, a resource request is granted only if:',['The system is already in an unsafe state','The resulting state is a safe state','All other processes are blocked','The requesting process has the highest priority'],1],
+  ['B','Operating Systems','Which page replacement algorithm can suffer from Belady\'s anomaly (more frames causing more page faults)?',['LRU','Optimal','FIFO','LFU'],2],
+  ['B','Operating Systems','In a paging system with a 32-bit logical address space and a page size of 4 KB, how many entries does the page table have?',['2¹⁰','2¹²','2²⁰','2³²'],2],
+  ['B','Operating Systems','Which of the following scheduling algorithms is NON-preemptive?',['Round Robin','SRTF (Shortest Remaining Time First)','FCFS (First Come First Served)','Priority with preemption'],2],
+  ['B','Operating Systems','Which scheduler moves a process from the ready queue to the running state?',['Short-term (CPU) scheduler','Long-term scheduler','Medium-term scheduler','Device driver'],0],
+  ['B','Operating Systems','What is thrashing in an operating system?',['When a process uses 100% CPU continuously','When the CPU remains idle for extended periods','When excessive page swapping causes the system to spend more time paging than executing','When multiple processes compete for the same I/O device'],2],
+  # ---- SECTION B : Networking (Q41-Q45) ----
+  ['B','Networking','Which OSI layer is responsible for end-to-end error detection, flow control, and reliable data delivery?',['Network','Data Link','Transport','Session'],2],
+  ['B','Networking','How many usable host addresses are available in the subnet 192.168.10.0/26?',['30','62','126','254'],1],
+  ['B','Networking','What is the correct sequence of a TCP three-way handshake?',['SYN → SYN-ACK → ACK','ACK → SYN → SYN-ACK','SYN → ACK → SYN-ACK','SYN-ACK → SYN → ACK'],0],
+  ['B','Networking','What is the primary function of ARP (Address Resolution Protocol)?',['Resolve domain names to IP addresses','Resolve IP addresses to MAC addresses','Resolve MAC addresses to IP addresses','Dynamically assign IP addresses'],1],
+  ['B','Networking','Which transport-layer protocol provides reliable, connection-oriented communication?',['UDP','IP','TCP','ICMP'],2],
+  # ---- SECTION B : Big Data & AI Basics (Q46-Q50) ----
+  ['B','Big Data & AI Basics','In MapReduce, what is the role of the Shuffle and Sort phase?',['Split input data into chunks for Mappers','Group all values sharing the same key and sort them before sending to Reducers','Execute the user-defined Map function','Write the final output directly to HDFS'],1],
+  ['B','Big Data & AI Basics','Which activation function is most commonly used in hidden layers of deep neural networks to mitigate the vanishing gradient problem?',['Sigmoid','Tanh','ReLU','Softmax'],2],
+  ['B','Big Data & AI Basics','In the bias-variance tradeoff, which statement is correct?',['High bias and high variance together produce the best model','Reducing bias always reduces variance','High bias causes underfitting; high variance causes overfitting; a balance is essential','Variance measures accuracy and bias measures speed'],2],
+  ['B','Big Data & AI Basics','What is the role of the NameNode in HDFS?',['Store the actual data blocks','Manage the file system namespace and metadata, including block locations','Perform MapReduce computations','Replicate data blocks across DataNodes'],1],
+  ['B','Big Data & AI Basics','Which algorithm computes the gradient of the loss function with respect to every weight in a neural network in order to update them during training?',['Gradient Descent','K-Means Clustering','Backpropagation','Forward propagation'],2],
+]
+
+# ================================================================
 #  VERIFY COUNTS
 # ================================================================
 assert len(s1_data) == 100, f"Set 1 count wrong: {len(s1_data)}"
 assert len(s2_data) == 100, f"Set 2 count wrong: {len(s2_data)}"
 assert len(s3_data) == 150, f"Set 3 count wrong: {len(s3_data)}"
 assert len(s5_data) == 100, f"Set 5 count wrong: {len(s5_data)}"
-print(f"Question counts: Set1={len(s1_data)}, Set2={len(s2_data)}, Set3={len(s3_data)}, Set5={len(s5_data)}")
+assert len(s6_data) == 100, f"Set 6 count wrong: {len(s6_data)}"
+print(f"Question counts: Set1={len(s1_data)}, Set2={len(s2_data)}, Set3={len(s3_data)}, Set5={len(s5_data)}, Set6={len(s6_data)}")
 
 # ================================================================
 #  ENCODE ANSWER KEYS
@@ -535,7 +654,8 @@ s1_ak = encode_ak([q[4] for q in s1_data])
 s2_ak = encode_ak([q[4] for q in s2_data])
 s3_ak = encode_ak([q[4] for q in s3_data])
 s5_ak = encode_ak([q[4] for q in s5_data])
-print(f"AKs computed: s1={len(s1_ak)}, s2={len(s2_ak)}, s3={len(s3_ak)}, s5={len(s5_ak)}")
+s6_ak = encode_ak([q[4] for q in s6_data])
+print(f"AKs computed: s1={len(s1_ak)}, s2={len(s2_ak)}, s3={len(s3_ak)}, s5={len(s5_ak)}, s6={len(s6_ak)}")
 
 # ================================================================
 #  READ EXISTING HTML
@@ -614,6 +734,7 @@ s1_qs = qs_to_js(s1_data)
 s2_qs = qs_to_js(s2_data)
 s3_qs = qs_to_js(s3_data)
 s5_qs = qs_to_js(s5_data)
+s6_qs = qs_to_js(s6_data)
 
 # ================================================================
 #  NEW CSS
@@ -686,6 +807,13 @@ NEW_WAITING = """<div id="waiting-screen">
       <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
       <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">IoT, AI Passages + Advanced CS Topics</div>
     </div>
+    <div class="set-card" id="card-6" onclick="selectSet('6')">
+      <div class="sc-badge" style="background:#7b1fa2;">Advanced Pro</div>
+      <div class="sc-num">Practice Set 6</div>
+      <div class="sc-name">Section A + B</div>
+      <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
+      <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">Blockchain, Quantum, AVL, Banker\'s, Backprop</div>
+    </div>
   </div>
   <div id="set-info-panel" style="display:none">
     <div class="info-grid" id="set-info-grid"></div>
@@ -731,6 +859,10 @@ const SETS = {
   '5': { name:'Practice Set 5', level:'Advanced', totalQ:100, sections:['A','B'], maxScore:300,
          ak:'__S5_AK__', questions:[
   __S5_Q__
+  ]},
+  '6': { name:'Practice Set 6', level:'Advanced Pro', totalQ:100, sections:['A','B'], maxScore:300,
+         ak:'__S6_AK__', questions:[
+  __S6_Q__
   ]}
 };
 
@@ -1244,11 +1376,13 @@ final_js = final_js.replace('__S2_AK__', s2_ak)
 final_js = final_js.replace('__S3_AK__', s3_ak)
 final_js = final_js.replace('__S4_AK__', s4_ak)
 final_js = final_js.replace('__S5_AK__', s5_ak)
+final_js = final_js.replace('__S6_AK__', s6_ak)
 final_js = final_js.replace('  __S1_Q__\n', '  ' + s1_qs.replace('\n', '\n  ') + '\n')
 final_js = final_js.replace('  __S2_Q__\n', '  ' + s2_qs.replace('\n', '\n  ') + '\n')
 final_js = final_js.replace('  __S3_Q__\n', '  ' + s3_qs.replace('\n', '\n  ') + '\n')
 final_js = final_js.replace('__S4_Q__', q4_content)
 final_js = final_js.replace('  __S5_Q__\n', '  ' + s5_qs.replace('\n', '\n  ') + '\n')
+final_js = final_js.replace('  __S6_Q__\n', '  ' + s6_qs.replace('\n', '\n  ') + '\n')
 
 script_replacement = '<script>\n' + final_js + '\n</script>'
 html = script_pat.sub(lambda m: script_replacement, html)
