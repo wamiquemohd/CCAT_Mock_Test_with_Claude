@@ -1077,8 +1077,8 @@ window.addEventListener('load', () => {
   loadS();
   if (S.selectedSet) initCurrentSet();
 
-  // Only resume a session that was actively in progress (timer had started)
-  const inProgress = S.tStamp !== null;
+  // Only resume a session that was actively in progress (nickname was entered and exam started)
+  const inProgress = S.startedAt !== null;
   if (inProgress) {
     if (S.done && S.selectedSet)  { showResults(); return; }
     if (S.bDone && S.selectedSet && SETS[S.selectedSet].sections.includes('C')) { enterSection('C'); return; }
