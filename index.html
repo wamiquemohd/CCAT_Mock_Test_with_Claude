@@ -745,6 +745,31 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 .set-card.selected .sc-badge { background: #43a047; }
 #set-info-panel { text-align: center; width: 100%; max-width: 660px; }
 
+
+/* ===== SET SELECTOR ===== */
+.set-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px; max-width: 660px; width: 100%; margin: 16px 0;
+}
+@media(max-width:540px){ .set-cards-grid { grid-template-columns: 1fr; } }
+.set-card {
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px; padding: 16px 20px; cursor: pointer; position: relative;
+  text-align: left; transition: all 0.15s;
+}
+.set-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+.set-card.selected { background: rgba(255,255,255,0.25); border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+.sc-num  { font-size: 0.73rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.sc-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.sc-meta { font-size: 0.76rem; opacity: 0.8; }
+.sc-badge {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.65rem; padding: 2px 9px; border-radius: 10px;
+  font-weight: 700; letter-spacing: 0.5px; background: rgba(255,255,255,0.2);
+}
+.set-card.selected .sc-badge { background: #43a047; }
+#set-info-panel { text-align: center; width: 100%; max-width: 660px; }
+
 </style>
 </head>
 <body>
@@ -797,7 +822,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
       <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">Blockchain, Quantum, AVL, Banker's, Backprop</div>
     </div>
     <div class="set-card" id="card-7" onclick="selectSet('7')">
-      <div class="sc-badge" style="background:#b71c1c;">Hardest</div>
+      <div class="sc-badge" style="background:#b71c1c;">Advanced Pro Max</div>
       <div class="sc-num">Practice Set 7</div>
       <div class="sc-name">Section A + B</div>
       <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
@@ -899,7 +924,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
   <div id="res-body">
     <div class="score-grid" id="score-grid"></div>
     <div class="filter-bar">
-      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
+      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
       <button class="f-btn"    onclick="filterSol('w',this)">Wrong Only</button>
       <button class="f-btn"    onclick="filterSol('c',this)">Correct Only</button>
       <button class="f-btn"    onclick="filterSol('u',this)">Unattempted</button>
@@ -1703,6 +1728,7 @@ const SETS = {
   
   
   
+  
   ]},
   '5': { name:'Practice Set 5', level:'Advanced', totalQ:100, sections:['A','B'], maxScore:300,
          ak:'DzUQPiccCxM1ewk2ED4hGg4RM3gMNhA+IhwNEDJ7DzUQOCcZCxMyfQwzED0hGQwQNXsMNhM9JxkNEzJ7DzQTPSEcDRYzegk0ED8gHA4WMnoPNhU/IRkOEzN7DjYTPyAcDRMyew==', questions:[
@@ -1910,7 +1936,7 @@ const SETS = {
     {"id": 99, "s": "B", "cat": "Big Data & AI Basics", "q": "What is the role of the NameNode in HDFS?", "o": ["Store the actual data blocks", "Manage the file system namespace and metadata, including block locations", "Perform MapReduce computations", "Replicate data blocks across DataNodes"], "exp": "Correct answer is B: Manage the file system namespace and metadata, including block locations"},
     {"id": 100, "s": "B", "cat": "Big Data & AI Basics", "q": "Which algorithm computes the gradient of the loss function with respect to every weight in a neural network in order to update them during training?", "o": ["Gradient Descent", "K-Means Clustering", "Backpropagation", "Forward propagation"], "exp": "Correct answer is C: Backpropagation"}
   ]},
-  '7': { name:'Practice Set 7', level:'Hardest', totalQ:100, sections:['A','B'], maxScore:300,
+  '7': { name:'Practice Set 7', level:'Advanced Pro Max', totalQ:100, sections:['A','B'], maxScore:300,
          ak:'DzUTPyAbDBEyew41Ej4gHAwTM3sONBI+IBoMEzB9DDQTPyEbDREyeg40Ej8hGwwWMngPNRI4IRsMEDN6DzUVPycbDREzeg80Ez8hGw0QM3sONRI+IRwNETN6DzQSPyEaDRMzeg==', questions:[
   {"id": 1, "s": "A", "cat": "Quantitative Aptitude", "q": "A sum of money doubles itself at compound interest in 3 years. In how many years will it become 8 times?", "o": ["6 years", "9 years", "12 years", "27 years"], "exp": "Correct answer is B: 9 years"},
     {"id": 2, "s": "A", "cat": "Quantitative Aptitude", "q": "A can do 1/3 of a work in 5 days; B can do 2/5 of the same work in 6 days. In how many days will both together finish it?", "o": ["6 days", "7.5 days", "8 days", "9 days"], "exp": "Correct answer is B: 7.5 days"},

@@ -647,7 +647,7 @@ assert len(s5_data) == 100, f"Set 5 count wrong: {len(s5_data)}"
 assert len(s6_data) == 100, f"Set 6 count wrong: {len(s6_data)}"
 
 # ================================================================
-#  SET 7 — Hardest (100 questions, Sections A+B)
+#  SET 7 — Advanced Pro Max (100 questions, Sections A+B)
 #  Maximum difficulty within C-CAT boundaries
 # ================================================================
 s7_data = [
@@ -938,7 +938,7 @@ NEW_WAITING = """<div id="waiting-screen">
       <div class="sc-meta" style="font-size:0.7rem;opacity:0.65;margin-top:3px;">Blockchain, Quantum, AVL, Banker\'s, Backprop</div>
     </div>
     <div class="set-card" id="card-7" onclick="selectSet('7')">
-      <div class="sc-badge" style="background:#b71c1c;">Hardest</div>
+      <div class="sc-badge" style="background:#b71c1c;">Advanced Pro Max</div>
       <div class="sc-num">Practice Set 7</div>
       <div class="sc-name">Section A + B</div>
       <div class="sc-meta">100 Questions &nbsp;&middot;&nbsp; 2 Hours</div>
@@ -994,7 +994,7 @@ const SETS = {
          ak:'__S6_AK__', questions:[
   __S6_Q__
   ]},
-  '7': { name:'Practice Set 7', level:'Hardest', totalQ:100, sections:['A','B'], maxScore:300,
+  '7': { name:'Practice Set 7', level:'Advanced Pro Max', totalQ:100, sections:['A','B'], maxScore:300,
          ak:'__S7_AK__', questions:[
   __S7_Q__
   ]}
