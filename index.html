@@ -695,6 +695,31 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 .set-card.selected .sc-badge { background: #43a047; }
 #set-info-panel { text-align: center; width: 100%; max-width: 660px; }
 
+
+/* ===== SET SELECTOR ===== */
+.set-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px; max-width: 660px; width: 100%; margin: 16px 0;
+}
+@media(max-width:540px){ .set-cards-grid { grid-template-columns: 1fr; } }
+.set-card {
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px; padding: 16px 20px; cursor: pointer; position: relative;
+  text-align: left; transition: all 0.15s;
+}
+.set-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+.set-card.selected { background: rgba(255,255,255,0.25); border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+.sc-num  { font-size: 0.73rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.sc-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.sc-meta { font-size: 0.76rem; opacity: 0.8; }
+.sc-badge {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.65rem; padding: 2px 9px; border-radius: 10px;
+  font-weight: 700; letter-spacing: 0.5px; background: rgba(255,255,255,0.2);
+}
+.set-card.selected .sc-badge { background: #43a047; }
+#set-info-panel { text-align: center; width: 100%; max-width: 660px; }
+
 </style>
 </head>
 <body>
@@ -849,7 +874,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
   <div id="res-body">
     <div class="score-grid" id="score-grid"></div>
     <div class="filter-bar">
-      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
+      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
       <button class="f-btn"    onclick="filterSol('w',this)">Wrong Only</button>
       <button class="f-btn"    onclick="filterSol('c',this)">Correct Only</button>
       <button class="f-btn"    onclick="filterSol('u',this)">Unattempted</button>
@@ -1651,6 +1676,7 @@ const SETS = {
   
   
   
+  
   ]},
   '5': { name:'Practice Set 5', level:'Advanced', totalQ:100, sections:['A','B'], maxScore:300,
          ak:'DzUQPiccCxM1ewk2ED4hGg4RM3gMNhA+IhwNEDJ7DzUQOCcZCxMyfQwzED0hGQwQNXsMNhM9JxkNEzJ7DzQTPSEcDRYzegk0ED8gHA4WMnoPNhU/IRkOEzN7DjYTPyAcDRMyew==', questions:[
@@ -1948,7 +1974,7 @@ const SETS = {
     {"id": 86, "s": "B", "cat": "Operating Systems", "q": "Which page is replaced by the LRU (Least Recently Used) page replacement algorithm?", "o": ["The page used most recently", "The page in memory the longest", "The page not used for the longest time in the future", "The page that was used least recently"], "exp": "Correct answer is D: The page that was used least recently"},
     {"id": 87, "s": "B", "cat": "Operating Systems", "q": "In the semaphore-based producer-consumer solution with a buffer of size N, which semaphore tracks the number of FULL buffer slots?", "o": ["mutex", "full", "empty", "block"], "exp": "Correct answer is B: full"},
     {"id": 88, "s": "B", "cat": "Operating Systems", "q": "Which of the following is a defining characteristic of a Real-Time Operating System (RTOS)?", "o": ["Maximises throughput for batch jobs", "Provides a GUI for user interaction", "Guarantees a response to events within a predetermined bounded time", "Runs only on single-core processors"], "exp": "Correct answer is C: Guarantees a response to events within a predetermined bounded time"},
-    {"id": 89, "s": "B", "cat": "Operating Systems", "q": "What is the key difference between a process and a thread?", "o": ["Threads have separate memory; processes share memory", "A thread is a unit of execution within a process; threads in the same process share memory and resources C) Processes run faster than threads", "A process can only contain one thread"], "exp": "Correct answer is B: A thread is a unit of execution within a process; threads in the same process share memory and resources C) Processes run faster than threads"},
+    {"id": 89, "s": "B", "cat": "Operating Systems", "q": "What is the key difference between a process and a thread?", "o": ["Threads have separate memory; processes share memory", "A thread is a unit of execution within a process; threads in the same process share memory and resources", "Processes run faster than threads", "A process can only contain one thread"], "exp": "Correct answer is B: A thread is a unit of execution within a process; threads in the same process share memory and resources"},
     {"id": 90, "s": "B", "cat": "Operating Systems", "q": "Which scheduling algorithm minimises average waiting time for a known set of processes?", "o": ["FCFS", "Round Robin", "SJF (Shortest Job First)", "Priority Scheduling"], "exp": "Correct answer is C: SJF (Shortest Job First)"},
     {"id": 91, "s": "B", "cat": "Networking", "q": "What is the primary purpose of NAT (Network Address Translation)?", "o": ["Encrypting all outgoing traffic", "Translating private IP addresses to a public IP for internet access, thereby conserving IPv4 address space", "Dynamically assigning MAC addresses", "Routing packets between network topologies"], "exp": "Correct answer is B: Translating private IP addresses to a public IP for internet access, thereby conserving IPv4 address space"},
     {"id": 92, "s": "B", "cat": "Networking", "q": "What is the size of an IPv6 address?", "o": ["32 bits", "64 bits", "128 bits", "256 bits"], "exp": "Correct answer is C: 128 bits"},
