@@ -1488,8 +1488,16 @@ function filterSol(type,btn) {
 #  APPLY CHANGES TO HTML
 # ================================================================
 
-# 1. Add CSS
-html = html.replace('</style>', NEW_CSS + '\n</style>', 1)
+# 1. Add CSS (idempotent: find first generated CSS marker, cut to </style>, reinsert fresh)
+_style_end = html.index('</style>')
+_cut = _style_end  # default: nothing to cut
+for _m in ['/* ==GENERATED_CSS_START== */', '/* ===== CREATOR CARD ===== */', '/* ===== SET SELECTOR ===== */']:
+    idx = html.find(_m)
+    if 0 < idx < _style_end:
+        _cut = min(_cut, idx)
+if _cut < _style_end:
+    html = html[:_cut] + '</style>' + html[_style_end + len('</style>'):]
+html = html.replace('</style>', '/* ==GENERATED_CSS_START== */\n' + NEW_CSS + '\n/* ==GENERATED_CSS_END== */\n</style>', 1)
 
 # 2. Update title
 html = html.replace(
@@ -1521,14 +1529,11 @@ html = html.replace(
     '<button id="sec-modal-btn" onclick="beginNextSection()">Start Section B &rarr;</button>'
 )
 
-# 6. Add id to filter-all button
-html = html.replace(
-    "onclick=\"filterSol('all',this)\">All 100</button>",
-    "id=\"filter-all-btn\" onclick=\"filterSol('all',this)\">All 100</button>"
-)
-
-# 6b. Insert creator thank-you card between score grid and filter bar
-CREATOR_CARD = """    <div class="creator-card">
+# 6. Replace entire res-body inner content (score-grid → sol-list) in one idempotent shot.
+# Hardcoding the full block means no matter what garbage accumulated before, we always
+# end up with exactly one clean creator card, one filter-bar, and one sol-list.
+RES_BODY_INNER = """<div class="score-grid" id="score-grid"></div>
+    <div class="creator-card">
       <div>
         <div class="creator-label">Prepared by</div>
         <div class="creator-name">Mohd Wamique</div>
@@ -1540,25 +1545,19 @@ CREATOR_CARD = """    <div class="creator-card">
         Connect on LinkedIn
       </a>
     </div>
-"""
-# Remove any existing creator card first (idempotent across re-runs)
-# Use depth-counting to find the true closing </div> of the card
-marker = '\n    <div class="creator-card">'
-while marker in html:
-    s = html.index(marker)
-    pos = s + 1; depth = 0
-    while pos < len(html):
-        if html[pos:pos+4] == '<div': depth += 1
-        elif html[pos:pos+6] == '</div>':
-            depth -= 1
-            if depth == 0:
-                html = html[:s] + html[pos+6:]; break
-        pos += 1
-    else:
-        break
-html = html.replace(
-    '    <div class="filter-bar">',
-    CREATOR_CARD + '    <div class="filter-bar">'
+    <div class="filter-bar">
+      <button class="f-btn on" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
+      <button class="f-btn"    onclick="filterSol('w',this)">Wrong Only</button>
+      <button class="f-btn"    onclick="filterSol('c',this)">Correct Only</button>
+      <button class="f-btn"    onclick="filterSol('u',this)">Unattempted</button>
+    </div>
+    <div class="sol-section-title">Detailed Solutions</div>
+    <div id="sol-list"></div>"""
+html = re.sub(
+    r'<div class="score-grid" id="score-grid"></div>.*?<div id="sol-list"></div>',
+    RES_BODY_INNER,
+    html,
+    flags=re.DOTALL
 )
 
 # 7. Replace script section
