@@ -865,21 +865,28 @@ s7_qs = qs_to_js(s7_data)
 NEW_CSS = """
 /* ===== CREATOR CARD ===== */
 .creator-card {
-  background:#fff; border-radius:12px; border-left:4px solid #0077b5;
-  padding:20px 24px; margin:0 0 20px 0;
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  background:linear-gradient(135deg,#f8f9ff 0%,#eef2ff 100%);
+  border-radius:14px; border:1px solid #c5cae9;
+  padding:22px 28px 22px 32px; margin:0 0 24px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  box-shadow:0 4px 18px rgba(26,35,126,0.09); position:relative; overflow:hidden;
 }
-.creator-name { font-size:1.05rem; font-weight:700; color:#1a237e; }
-.creator-tag  { font-size:0.78rem; color:#0077b5; margin:2px 0 8px; }
-.creator-msg  { font-size:0.85rem; color:#555; line-height:1.5; max-width:460px; }
+.creator-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:5px;
+  background:linear-gradient(180deg,#0077b5,#1a237e);
+}
+.creator-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#5c6bc0; margin-bottom:3px; }
+.creator-name  { font-size:1.22rem; font-weight:800; color:#1a237e; letter-spacing:-0.3px; }
+.creator-tag   { font-size:0.8rem; color:#0077b5; font-weight:500; margin:4px 0 10px; }
+.creator-msg   { font-size:0.86rem; color:#546e7a; line-height:1.6; max-width:440px; }
 .creator-li-btn {
-  display:inline-flex; align-items:center; gap:8px;
-  background:#0077b5; color:white; text-decoration:none;
-  padding:11px 22px; border-radius:8px; font-size:0.9rem; font-weight:600;
-  white-space:nowrap; flex-shrink:0; transition:background 0.15s;
+  display:inline-flex; align-items:center; gap:9px;
+  background:linear-gradient(135deg,#0077b5,#005a8e); color:white; text-decoration:none;
+  padding:12px 24px; border-radius:10px; font-size:0.92rem; font-weight:700;
+  white-space:nowrap; flex-shrink:0; letter-spacing:0.2px;
+  box-shadow:0 4px 12px rgba(0,119,181,0.3); transition:all 0.2s;
 }
-.creator-li-btn:hover { background:#005f91; }
+.creator-li-btn:hover { background:linear-gradient(135deg,#005a8e,#004170); transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,119,181,0.4); }
 @media(max-width:600px){
   .creator-card { flex-direction:column; align-items:flex-start; }
 }
@@ -1523,7 +1530,8 @@ html = html.replace(
 # 6b. Insert creator thank-you card between score grid and filter bar
 CREATOR_CARD = """    <div class="creator-card">
       <div>
-        <div class="creator-name">Prepared by &nbsp;<strong>Mohd Wamique</strong></div>
+        <div class="creator-label">Prepared by</div>
+        <div class="creator-name">Mohd Wamique</div>
         <div class="creator-tag">ex-CDACian &nbsp;&middot;&nbsp; PG-DESD Alumni</div>
         <div class="creator-msg">Built this to help C-CAT aspirants like you. If it helped your prep, I&rsquo;d love to connect!</div>
       </div>
@@ -1533,6 +1541,8 @@ CREATOR_CARD = """    <div class="creator-card">
       </a>
     </div>
 """
+# Remove any existing creator card first (idempotent across re-runs)
+html = re.sub(r'\n    <div class="creator-card">.*?    </div>', '', html, flags=re.DOTALL)
 html = html.replace(
     '    <div class="filter-bar">',
     CREATOR_CARD + '    <div class="filter-bar">'
