@@ -1523,8 +1523,8 @@ html = html.replace(
 # 6b. Insert creator thank-you card between score grid and filter bar
 CREATOR_CARD = """    <div class="creator-card">
       <div>
-        <div class="creator-name">Mohd Wamique</div>
-        <div class="creator-tag">ex-CDACian &nbsp;&middot;&nbsp; PG-DAC Alumni</div>
+        <div class="creator-name">Prepared by &nbsp;<strong>Mohd Wamique</strong></div>
+        <div class="creator-tag">ex-CDACian &nbsp;&middot;&nbsp; PG-DESD Alumni</div>
         <div class="creator-msg">Built this to help C-CAT aspirants like you. If it helped your prep, I&rsquo;d love to connect!</div>
       </div>
       <a href="https://www.linkedin.com/in/mohammadwamique/" target="_blank" rel="noopener" class="creator-li-btn">
