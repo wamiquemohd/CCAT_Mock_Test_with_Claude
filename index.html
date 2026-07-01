@@ -937,6 +937,110 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
 .set-card.selected .sc-badge { background: #43a047; }
 #set-info-panel { text-align: center; width: 100%; max-width: 660px; }
 
+
+/* ===== CREATOR CARD ===== */
+.creator-card {
+  background:linear-gradient(135deg,#f8f9ff 0%,#eef2ff 100%);
+  border-radius:14px; border:1px solid #c5cae9;
+  padding:22px 28px 22px 32px; margin:0 0 24px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  box-shadow:0 4px 18px rgba(26,35,126,0.09); position:relative; overflow:hidden;
+}
+.creator-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:5px;
+  background:linear-gradient(180deg,#0077b5,#1a237e);
+}
+.creator-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#5c6bc0; margin-bottom:3px; }
+.creator-name  { font-size:1.22rem; font-weight:800; color:#1a237e; letter-spacing:-0.3px; }
+.creator-tag   { font-size:0.8rem; color:#0077b5; font-weight:500; margin:4px 0 10px; }
+.creator-msg   { font-size:0.86rem; color:#546e7a; line-height:1.6; max-width:440px; }
+.creator-li-btn {
+  display:inline-flex; align-items:center; gap:9px;
+  background:linear-gradient(135deg,#0077b5,#005a8e); color:white; text-decoration:none;
+  padding:12px 24px; border-radius:10px; font-size:0.92rem; font-weight:700;
+  white-space:nowrap; flex-shrink:0; letter-spacing:0.2px;
+  box-shadow:0 4px 12px rgba(0,119,181,0.3); transition:all 0.2s;
+}
+.creator-li-btn:hover { background:linear-gradient(135deg,#005a8e,#004170); transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,119,181,0.4); }
+@media(max-width:600px){
+  .creator-card { flex-direction:column; align-items:flex-start; }
+}
+/* ===== SET SELECTOR ===== */
+.set-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px; max-width: 660px; width: 100%; margin: 16px 0;
+}
+@media(max-width:540px){ .set-cards-grid { grid-template-columns: 1fr; } }
+.set-card {
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px; padding: 16px 20px; cursor: pointer; position: relative;
+  text-align: left; transition: all 0.15s;
+}
+.set-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+.set-card.selected { background: rgba(255,255,255,0.25); border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+.sc-num  { font-size: 0.73rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.sc-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.sc-meta { font-size: 0.76rem; opacity: 0.8; }
+.sc-badge {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.65rem; padding: 2px 9px; border-radius: 10px;
+  font-weight: 700; letter-spacing: 0.5px; background: rgba(255,255,255,0.2);
+}
+.set-card.selected .sc-badge { background: #43a047; }
+#set-info-panel { text-align: center; width: 100%; max-width: 660px; }
+
+
+/* ===== CREATOR CARD ===== */
+.creator-card {
+  background:linear-gradient(135deg,#f8f9ff 0%,#eef2ff 100%);
+  border-radius:14px; border:1px solid #c5cae9;
+  padding:22px 28px 22px 32px; margin:0 0 24px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  box-shadow:0 4px 18px rgba(26,35,126,0.09); position:relative; overflow:hidden;
+}
+.creator-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:5px;
+  background:linear-gradient(180deg,#0077b5,#1a237e);
+}
+.creator-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#5c6bc0; margin-bottom:3px; }
+.creator-name  { font-size:1.22rem; font-weight:800; color:#1a237e; letter-spacing:-0.3px; }
+.creator-tag   { font-size:0.8rem; color:#0077b5; font-weight:500; margin:4px 0 10px; }
+.creator-msg   { font-size:0.86rem; color:#546e7a; line-height:1.6; max-width:440px; }
+.creator-li-btn {
+  display:inline-flex; align-items:center; gap:9px;
+  background:linear-gradient(135deg,#0077b5,#005a8e); color:white; text-decoration:none;
+  padding:12px 24px; border-radius:10px; font-size:0.92rem; font-weight:700;
+  white-space:nowrap; flex-shrink:0; letter-spacing:0.2px;
+  box-shadow:0 4px 12px rgba(0,119,181,0.3); transition:all 0.2s;
+}
+.creator-li-btn:hover { background:linear-gradient(135deg,#005a8e,#004170); transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,119,181,0.4); }
+@media(max-width:600px){
+  .creator-card { flex-direction:column; align-items:flex-start; }
+}
+/* ===== SET SELECTOR ===== */
+.set-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px; max-width: 660px; width: 100%; margin: 16px 0;
+}
+@media(max-width:540px){ .set-cards-grid { grid-template-columns: 1fr; } }
+.set-card {
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px; padding: 16px 20px; cursor: pointer; position: relative;
+  text-align: left; transition: all 0.15s;
+}
+.set-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+.set-card.selected { background: rgba(255,255,255,0.25); border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); }
+.sc-num  { font-size: 0.73rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.sc-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.sc-meta { font-size: 0.76rem; opacity: 0.8; }
+.sc-badge {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.65rem; padding: 2px 9px; border-radius: 10px;
+  font-weight: 700; letter-spacing: 0.5px; background: rgba(255,255,255,0.2);
+}
+.set-card.selected .sc-badge { background: #43a047; }
+#set-info-panel { text-align: center; width: 100%; max-width: 660px; }
+
 </style>
 </head>
 <body>
@@ -1113,7 +1217,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #
       </a>
     </div>
     <div class="filter-bar">
-      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
+      <button class="f-btn on" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" id="filter-all-btn" onclick="filterSol('all',this)">All 100</button>
       <button class="f-btn"    onclick="filterSol('w',this)">Wrong Only</button>
       <button class="f-btn"    onclick="filterSol('c',this)">Correct Only</button>
       <button class="f-btn"    onclick="filterSol('u',this)">Unattempted</button>
@@ -1906,6 +2010,8 @@ const SETS = {
    o:['Class A','Class B','Class C','Class D'],
    exp:'Class B addresses (128.x–191.x) have default subnet mask 255.255.0.0 (/16).'},
 
+  
+  
   
   
   

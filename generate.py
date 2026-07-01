@@ -1542,7 +1542,20 @@ CREATOR_CARD = """    <div class="creator-card">
     </div>
 """
 # Remove any existing creator card first (idempotent across re-runs)
-html = re.sub(r'\n    <div class="creator-card">.*?    </div>', '', html, flags=re.DOTALL)
+# Use depth-counting to find the true closing </div> of the card
+marker = '\n    <div class="creator-card">'
+while marker in html:
+    s = html.index(marker)
+    pos = s + 1; depth = 0
+    while pos < len(html):
+        if html[pos:pos+4] == '<div': depth += 1
+        elif html[pos:pos+6] == '</div>':
+            depth -= 1
+            if depth == 0:
+                html = html[:s] + html[pos+6:]; break
+        pos += 1
+    else:
+        break
 html = html.replace(
     '    <div class="filter-bar">',
     CREATOR_CARD + '    <div class="filter-bar">'
